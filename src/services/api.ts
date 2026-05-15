@@ -60,5 +60,5 @@ export async function runDeveloperTool(
     text: input,
     ...options,
   });
-  return res.data;
+  return { output: res.data.output ?? res.data.result };
 }
