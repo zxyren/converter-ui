@@ -33,9 +33,25 @@ export function useConversion(category: string) {
       setJob(newJob);
 
       try {
-        const { job_id } = await convertFile(category, file, outputFormat, options);
+        const conversion = await convertFile(category, file, outputFormat, options);
 
-        setJob((prev) => prev ? { ...prev, id: job_id, status: 'processing', progress: 5 } : prev);
+        if (conversion.result_url) {
+          setJob((prev) =>
+            prev
+              ? {
+                  ...prev,
+                  id: conversion.job_id,
+                  status: 'done',
+                  progress: 100,
+                  resultUrl: conversion.result_url,
+                }
+              : prev
+          );
+          return;
+        }
+
+        const { job_id } = conversion;
+        setJob((prev) => (prev ? { ...prev, id: job_id, status: 'processing', progress: 5 } : prev));
 
         pollRef.current = setInterval(async () => {
           try {
