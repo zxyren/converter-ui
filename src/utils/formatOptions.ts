@@ -8,7 +8,7 @@ export const CATEGORY_FORMAT_MAP: Record<string, Record<string, string[]>> = {
     png: ["jpg", "webp", "gif", "bmp", "ico"],
     webp: ["jpg", "png", "gif"],
     heic: ["jpg", "png", "webp"],
-    svg: ["png", "jpg"],
+    svg: ["png", "jpg", "webp", "avif", "tiff", "ico"],
     bmp: ["jpg", "png", "webp"],
     gif: ["png", "webp"],
 
