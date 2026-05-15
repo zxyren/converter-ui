@@ -98,7 +98,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative overflow-hidden py-24 md:py-32">
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute left-1/2 top-0 h-150 w-200 -translate-x-1/2 -translate-y-1/4 rounded-full bg-primary/10 blur-3xl" />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -162,7 +162,7 @@ export default function Home() {
                     className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
                   >
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${color}`}
+                      className={`flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br ${color}`}
                     >
                       <Icon className={`h-5 w-5 ${iconColor}`} />
                     </div>

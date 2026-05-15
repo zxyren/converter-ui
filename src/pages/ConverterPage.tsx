@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { LucideIcon } from 'lucide-react';
-import { ConversionPanel } from '../components/converter/ConversionPanel';
-import { CATEGORY_FORMAT_MAP } from '../utils/formatOptions';
+import { motion } from "framer-motion";
+import { LucideIcon } from "lucide-react";
+import { ConversionPanel } from "../components/converter/ConversionPanel";
+import { CATEGORY_FORMAT_MAP } from "../utils/formatOptions";
 
 interface ConverterPageProps {
   title: string;
@@ -34,8 +34,10 @@ export function ConverterPage({
         className="mb-8"
       >
         <div className="mb-4 flex items-center gap-3">
-          <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${iconColor}`}>
-            <Icon className="h-5 w-5" />
+          <div
+            className={`flex h-10 w-10 items-center justify-center rounded-md ${iconColor}`}
+          >
+            <Icon size={23} />
           </div>
           <h1 className="text-2xl font-bold text-foreground">{title}</h1>
         </div>

@@ -142,15 +142,15 @@ export function ConversionPanel({
 
           {canConvert && (
             <Button
-              className="w-full gap-2"
-              size="lg"
+              className="w-full"
               onClick={handleConvert}
               data-testid="button-convert"
             >
+              Convert to{" "}
               {isKeepOriginal
                 ? `Trim to ${outputFormat?.toUpperCase()}`
-                : `Convert to ${outputFormat?.toUpperCase()}`}
-              <ArrowRight className="h-4 w-4" />
+                : `${outputFormat?.toUpperCase()}`}
+              <ArrowRight size={20} />
             </Button>
           )}
 

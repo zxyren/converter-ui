@@ -229,7 +229,7 @@ export function DropZone({
           transition={{ duration: 0.2 }}
           className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10"
         >
-          <Upload className="h-6 w-6 text-primary" />
+          <Upload size={23} className="text-primary" />
         </motion.div>
         <div>
           <p className="text-sm font-semibold text-foreground">

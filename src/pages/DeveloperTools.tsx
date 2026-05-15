@@ -1,28 +1,77 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Code, FileJson, FileText, Hash, Palette, Ruler } from 'lucide-react';
-import { DevToolPanel, InstantDevToolPanel, MarkdownPanel } from '../components/developer/DevToolPanel';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Code, FileJson, FileText, Hash, Palette, Ruler } from "lucide-react";
+import {
+  DevToolPanel,
+  InstantDevToolPanel,
+  MarkdownPanel,
+} from "../components/developer/DevToolPanel";
 
 const TOOLS = [
-  { id: 'json-xml', label: 'JSON to XML', icon: FileJson, panel: 'api' },
-  { id: 'xml-json', label: 'XML to JSON', icon: FileJson, panel: 'api' },
-  { id: 'yaml-json', label: 'YAML to JSON', icon: FileText, panel: 'api' },
-  { id: 'json-yaml', label: 'JSON to YAML', icon: FileText, panel: 'api' },
-  { id: 'base64-encode', label: 'Text to Base64', icon: Hash, panel: 'client' },
-  { id: 'base64-decode', label: 'Base64 to Text', icon: Hash, panel: 'client' },
-  { id: 'md-html', label: 'Markdown to HTML', icon: FileText, panel: 'markdown' },
-  { id: 'color-converter', label: 'Color Converter', icon: Palette, panel: 'client' },
+  { id: "json-xml", label: "JSON to XML", icon: FileJson, panel: "api" },
+  { id: "xml-json", label: "XML to JSON", icon: FileJson, panel: "api" },
+  { id: "yaml-json", label: "YAML to JSON", icon: FileText, panel: "api" },
+  { id: "json-yaml", label: "JSON to YAML", icon: FileText, panel: "api" },
+  { id: "base64-encode", label: "Text to Base64", icon: Hash, panel: "client" },
+  { id: "base64-decode", label: "Base64 to Text", icon: Hash, panel: "client" },
+  {
+    id: "md-html",
+    label: "Markdown to HTML",
+    icon: FileText,
+    panel: "markdown",
+  },
+  {
+    id: "color-converter",
+    label: "Color Converter",
+    icon: Palette,
+    panel: "client",
+  },
 ];
 
-const TOOL_CONFIG: Record<string, { inputLabel: string; outputLabel: string; inputPlaceholder: string }> = {
-  'json-xml': { inputLabel: 'JSON', outputLabel: 'XML', inputPlaceholder: '{\n  "key": "value"\n}' },
-  'xml-json': { inputLabel: 'XML', outputLabel: 'JSON', inputPlaceholder: '<root><key>value</key></root>' },
-  'yaml-json': { inputLabel: 'YAML', outputLabel: 'JSON', inputPlaceholder: 'key: value\nlist:\n  - item1\n  - item2' },
-  'json-yaml': { inputLabel: 'JSON', outputLabel: 'YAML', inputPlaceholder: '{\n  "key": "value"\n}' },
-  'base64-encode': { inputLabel: 'Plain Text', outputLabel: 'Base64', inputPlaceholder: 'Enter text to encode...' },
-  'base64-decode': { inputLabel: 'Base64', outputLabel: 'Plain Text', inputPlaceholder: 'SGVsbG8gV29ybGQ=' },
-  'md-html': { inputLabel: 'Markdown', outputLabel: 'HTML', inputPlaceholder: '# Hello\n\nWrite markdown here...' },
-  'color-converter': { inputLabel: 'HEX Color', outputLabel: 'RGB / HSL', inputPlaceholder: '#1a73e8' },
+const TOOL_CONFIG: Record<
+  string,
+  { inputLabel: string; outputLabel: string; inputPlaceholder: string }
+> = {
+  "json-xml": {
+    inputLabel: "JSON",
+    outputLabel: "XML",
+    inputPlaceholder: '{\n  "key": "value"\n}',
+  },
+  "xml-json": {
+    inputLabel: "XML",
+    outputLabel: "JSON",
+    inputPlaceholder: "<root><key>value</key></root>",
+  },
+  "yaml-json": {
+    inputLabel: "YAML",
+    outputLabel: "JSON",
+    inputPlaceholder: "key: value\nlist:\n  - item1\n  - item2",
+  },
+  "json-yaml": {
+    inputLabel: "JSON",
+    outputLabel: "YAML",
+    inputPlaceholder: '{\n  "key": "value"\n}',
+  },
+  "base64-encode": {
+    inputLabel: "Plain Text",
+    outputLabel: "Base64",
+    inputPlaceholder: "Enter text to encode...",
+  },
+  "base64-decode": {
+    inputLabel: "Base64",
+    outputLabel: "Plain Text",
+    inputPlaceholder: "SGVsbG8gV29ybGQ=",
+  },
+  "md-html": {
+    inputLabel: "Markdown",
+    outputLabel: "HTML",
+    inputPlaceholder: "# Hello\n\nWrite markdown here...",
+  },
+  "color-converter": {
+    inputLabel: "HEX Color",
+    outputLabel: "RGB / HSL",
+    inputPlaceholder: "#1a73e8",
+  },
 };
 
 export default function DeveloperTools() {
@@ -39,13 +88,16 @@ export default function DeveloperTools() {
         className="mb-8"
       >
         <div className="mb-4 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-500/15 text-rose-600 dark:text-rose-400">
-            <Code className="h-5 w-5" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-rose-500/15 text-rose-600 dark:text-rose-400">
+            <Code size={23} />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Developer Tools</h1>
+          <h1 className="text-2xl font-bold text-foreground">
+            Developer Tools
+          </h1>
         </div>
         <p className="text-muted-foreground">
-          Text-based data format converters, encoders, and utilities — no file upload needed.
+          Text-based data format converters, encoders, and utilities — no file
+          upload needed.
         </p>
       </motion.div>
 
@@ -68,8 +120,8 @@ export default function DeveloperTools() {
                 data-testid={`button-tool-${id}`}
                 className={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-left transition-colors ${
                   activeTool === id
-                    ? 'bg-primary/10 text-primary'
-                    : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                 }`}
               >
                 <Icon className="h-3.5 w-3.5 shrink-0" />
@@ -92,9 +144,9 @@ export default function DeveloperTools() {
             <h2 className="font-semibold text-foreground">{active.label}</h2>
           </div>
 
-          {active.panel === 'markdown' ? (
+          {active.panel === "markdown" ? (
             <MarkdownPanel />
-          ) : active.panel === 'client' ? (
+          ) : active.panel === "client" ? (
             <InstantDevToolPanel
               toolId={activeTool}
               inputLabel={config.inputLabel}
