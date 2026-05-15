@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { Film } from 'lucide-react';
-import { ConverterPage } from './ConverterPage';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
+import { useState } from "react";
+import { Film } from "lucide-react";
+import { ConverterPage } from "./ConverterPage";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 export default function VideoConverter() {
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
 
   const extraOptions =
     startTime || endTime
@@ -18,9 +18,11 @@ export default function VideoConverter() {
 
   const extraFields = (
     <div className="rounded-lg border border-border bg-secondary/30 p-4 space-y-3">
-      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-        Clip options (optional)
-      </p>
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Clip options (optional)
+        </p>
+      </div>
       <div className="grid grid-cols-2 gap-3">
         <div className="space-y-1.5">
           <Label className="text-xs" htmlFor="start-time">
@@ -59,7 +61,7 @@ export default function VideoConverter() {
   return (
     <ConverterPage
       title="Video Converter"
-      description="Convert video files, extract audio, create GIFs, and more. Optionally clip a specific time range."
+      description="Convert video files, extract audio, create GIFs, and more. Optionally clip a specific time range and keep the original format."
       icon={Film}
       iconColor="bg-violet-500/15 text-violet-600 dark:text-violet-400"
       category="video"

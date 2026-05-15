@@ -9,9 +9,27 @@ interface DownloadSectionProps {
   onReset: () => void;
 }
 
+function getPreviewCategory(format: string): 'image' | 'video' | 'audio' | 'font' | 'other' {
+  const extension = format.toLowerCase();
+  if (['jpg', 'jpeg', 'png', 'webp', 'gif', 'bmp', 'avif', 'tiff', 'tif', 'ico', 'svg'].includes(extension)) {
+    return 'image';
+  }
+  if (['mp4', 'mov', 'mkv', 'avi', 'webm', 'm4v'].includes(extension)) {
+    return 'video';
+  }
+  if (['mp3', 'wav', 'aac', 'flac', 'ogg', 'opus', 'm4a'].includes(extension)) {
+    return 'audio';
+  }
+  if (['ttf', 'otf', 'woff', 'woff2'].includes(extension)) {
+    return 'font';
+  }
+  return 'other';
+}
+
 export function DownloadSection({ resultUrl, outputFormat, fileName, onReset }: DownloadSectionProps) {
   const baseName = fileName.replace(/\.[^.]+$/, '');
   const downloadName = `${baseName}.${outputFormat}`;
+  const previewCategory = getPreviewCategory(outputFormat);
 
   return (
     <motion.div
@@ -24,6 +42,34 @@ export function DownloadSection({ resultUrl, outputFormat, fileName, onReset }: 
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/15">
         <CheckCircle className="h-6 w-6 text-primary" />
       </div>
+
+      {resultUrl && previewCategory !== 'other' && (
+        <div className="w-full overflow-hidden rounded-2xl border border-border bg-background p-4 text-left">
+          {previewCategory === 'image' && (
+            <img src={resultUrl} alt={`Converted ${outputFormat}`} className="mx-auto max-h-60 w-full object-contain" />
+          )}
+          {previewCategory === 'video' && (
+            <video
+              src={resultUrl}
+              controls
+              className="mx-auto max-h-60 w-full rounded-xl bg-black"
+            />
+          )}
+          {previewCategory === 'audio' && (
+            <div className="flex flex-col items-center gap-3 text-sm text-muted-foreground">
+              <p className="font-medium text-foreground">Preview audio</p>
+              <audio controls src={resultUrl} className="w-full" />
+            </div>
+          )}
+          {previewCategory === 'font' && (
+            <div className="flex flex-col items-center gap-3 text-sm text-muted-foreground">
+              <p className="font-medium text-foreground">Font conversion ready</p>
+              <p>Download and install the converted font file.</p>
+            </div>
+          )}
+        </div>
+      )}
+
       <div>
         <p className="font-semibold text-foreground">Conversion complete</p>
         <p className="mt-0.5 text-sm text-muted-foreground">Your file is ready to download.</p>

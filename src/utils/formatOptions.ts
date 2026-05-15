@@ -93,12 +93,19 @@ export function getAvailableOutputsForFile(
 ): string[] {
   const ext = getFileExtension(file);
   // Try exact extension match first
-  const direct = getAvailableOutputsForCategory(ext, category);
+  let direct = getAvailableOutputsForCategory(ext, category);
+  if (category === 'video' && ext && direct.length > 0 && !direct.includes(ext)) {
+    direct = [...direct, ext];
+  }
   if (direct.length > 0) return direct;
   // Fallback to MIME-based extension
   const mimeExt = MIME_TO_EXT[file.type];
   if (mimeExt && mimeExt !== ext) {
-    return getAvailableOutputsForCategory(mimeExt, category);
+    let fallback = getAvailableOutputsForCategory(mimeExt, category);
+    if (category === 'video' && mimeExt && fallback.length > 0 && !fallback.includes(mimeExt)) {
+      fallback = [...fallback, mimeExt];
+    }
+    if (fallback.length > 0) return fallback;
   }
   return [];
 }

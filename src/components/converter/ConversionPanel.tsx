@@ -22,6 +22,7 @@ export function ConversionPanel({ category, extraFields, extraOptions }: Convers
   const [outputFormat, setOutputFormat] = useState<string | null>(null);
   const { job, startConversion, resetJob } = useConversion(category);
 
+  const inputFormat = file ? getFileExtension(file) : null;
   const availableFormats = file ? getAvailableOutputsForFile(file, category) : [];
 
   const handleFile = useCallback(
@@ -55,6 +56,7 @@ export function ConversionPanel({ category, extraFields, extraOptions }: Convers
   const isDone = job?.status === 'done';
   const isError = job?.status === 'error';
   const canConvert = !!file && !!outputFormat && !isConverting && !isDone;
+  const isKeepOriginal = !!outputFormat && outputFormat === inputFormat;
 
   return (
     <div className="space-y-5">
@@ -118,7 +120,7 @@ export function ConversionPanel({ category, extraFields, extraOptions }: Convers
               onClick={handleConvert}
               data-testid="button-convert"
             >
-              Convert to {outputFormat?.toUpperCase()}
+              {isKeepOriginal ? `Trim to ${outputFormat?.toUpperCase()}` : `Convert to ${outputFormat?.toUpperCase()}`}
               <ArrowRight className="h-4 w-4" />
             </Button>
           )}
