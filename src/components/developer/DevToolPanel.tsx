@@ -95,7 +95,7 @@ export function DevToolPanel({
     <div className="space-y-4">
       <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <label className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
             {inputLabel}
           </label>
           <Textarea
@@ -104,47 +104,40 @@ export function DevToolPanel({
             placeholder={inputPlaceholder}
             rows={10}
             data-testid="textarea-input"
-            className="font-mono text-sm resize-none"
+            className="font-mono text-sm resize-none mt-3"
           />
         </div>
         <div className="space-y-1.5">
-          <div className="flex items-center justify-between">
-            <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              {outputLabel}
-            </label>
+          <label className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
+            {outputLabel}
+          </label>
+          <div className="relative">
+            <Textarea
+              value={output}
+              readOnly
+              rows={10}
+              data-testid="textarea-output"
+              placeholder="Output will appear here..."
+              className="font-mono text-sm resize-none bg-secondary/50 mt-3"
+            />
             {output && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={handleCopy}
                 data-testid="button-copy"
-                className="h-6 gap-1 text-xs"
+                className="absolute right-2 top-2 h-6 gap-1 text-xs"
               >
-                {copied ? (
-                  <Check className="h-3 w-3" />
-                ) : (
-                  <Copy className="h-3 w-3" />
-                )}
+                {copied ? <Check size={16} /> : <Copy size={16} />}
                 {copied ? "Copied" : "Copy"}
               </Button>
             )}
           </div>
-          <Textarea
-            value={output}
-            readOnly
-            rows={10}
-            data-testid="textarea-output"
-            placeholder="Output will appear here..."
-            className="font-mono text-sm resize-none bg-secondary/50"
-          />
         </div>
       </div>
 
       {error && (
-        <p
-          className="text-sm text-destructive"
-          data-testid="text-devtool-error"
-        >
+        <p className="text-sm text-yellow-500" data-testid="text-devtool-error">
           {error}
         </p>
       )}
@@ -156,9 +149,9 @@ export function DevToolPanel({
         data-testid="button-devtool-convert"
       >
         {loading ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
+          <Loader2 size={16} className="animate-spin" />
         ) : (
-          <ArrowRight className="h-4 w-4" />
+          <ArrowRight size={16} />
         )}
         {loading ? "Converting..." : "Convert"}
       </Button>
@@ -263,9 +256,9 @@ export function MarkdownPanel() {
         data-testid="button-convert-markdown"
       >
         {loading ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
+          <Loader2 size={16} className="animate-spin" />
         ) : (
-          <ArrowRight className="h-4 w-4" />
+          <ArrowRight size={16} />
         )}
         {loading ? "Converting..." : "Convert to HTML"}
       </Button>

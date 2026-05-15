@@ -43,7 +43,7 @@ const CATEGORIES = [
     href: "/convert/font",
     icon: Type,
     label: "Font",
-    description: "TTF, OTF, WOFF, variable fonts",
+    description: "TTF, OTF, WOFF, WOFF2 variable fonts",
     color: "from-orange-500/20 to-amber-500/20",
     iconColor: "text-orange-500",
   },
@@ -162,7 +162,7 @@ export default function Home() {
                     className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
                   >
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br ${color}`}
+                      className={`flex h-12 w-12 items-center justify-center rounded-sm bg-linear-to-tr ${color}`}
                     >
                       <Icon className={`h-5 w-5 ${iconColor}`} />
                     </div>
@@ -214,8 +214,8 @@ export default function Home() {
                 variants={stagger.item}
                 className="rounded-xl border border-border bg-card p-5"
               >
-                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
-                  <Icon className="h-4.5 w-4.5 text-primary" />
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <Icon size={23} className="text-primary" />
                 </div>
                 <p className="font-semibold text-foreground">{title}</p>
                 <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
@@ -252,7 +252,7 @@ export default function Home() {
                 data-testid={`button-cta-${label.toLowerCase()}`}
               >
                 <Link href={href} className="gap-2">
-                  <Icon className="h-3.5 w-3.5" />
+                  <Icon size={23} />
                   {label}
                 </Link>
               </Button>

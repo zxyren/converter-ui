@@ -28,13 +28,13 @@ export function FormatSelector({
               whileTap={{ scale: 0.95 }}
               onClick={() => onSelect(fmt)}
               data-testid={`button-format-${fmt}`}
-              className={`relative flex items-center gap-1.5 rounded-lg border px-3.5 py-2 text-sm font-semibold uppercase tracking-wide transition-all ${
+              className={`relative cursor-pointer flex items-center gap-1.5 rounded-md border px-3.5 py-2 text-sm font-semibold uppercase tracking-wide transition-all ${
                 isSelected
                   ? "border-primary bg-primary/10 text-primary-foreground shadow-sm"
                   : "border-border bg-card text-foreground hover:border-primary/50 hover:bg-secondary"
               }`}
             >
-              {isSelected && <Check className="h-3 w-3" />}
+              {isSelected && <Check size={16} />}
               {fmt}
             </motion.button>
           );

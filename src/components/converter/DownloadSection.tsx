@@ -59,10 +59,6 @@ export function DownloadSection({
       className="flex flex-col items-center gap-4 rounded-xl border border-primary/30 bg-primary/5 p-6 text-center"
       data-testid="download-section"
     >
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/15">
-        <CheckCircle className="h-6 w-6 text-primary" />
-      </div>
-
       {resultUrl && previewCategory !== "other" && (
         <div className="w-full overflow-hidden rounded-2xl border border-border bg-background p-4 text-left">
           {previewCategory === "image" && (
@@ -106,13 +102,13 @@ export function DownloadSection({
         {resultUrl ? (
           <Button asChild data-testid="button-download">
             <a href={resultUrl} download={downloadName}>
-              <Download className="mr-2 h-4 w-4" />
+              <Download size={20} />
               Download {outputFormat.toUpperCase()}
             </a>
           </Button>
         ) : (
           <Button disabled data-testid="button-download-unavailable">
-            <Download className="mr-2 h-4 w-4" />
+            <Download size={20} />
             Download {outputFormat.toUpperCase()}
           </Button>
         )}
@@ -121,7 +117,7 @@ export function DownloadSection({
           onClick={onReset}
           data-testid="button-convert-another"
         >
-          <RotateCcw className="mr-2 h-4 w-4" />
+          <RotateCcw size={20} />
           Convert another
         </Button>
       </div>

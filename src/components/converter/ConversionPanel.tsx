@@ -111,10 +111,10 @@ export function ConversionPanel({
                 key="unsupported"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="flex items-center gap-2 rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive"
+                className="flex items-center gap-2 rounded-lg border border-yellow-500/50 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-500"
                 data-testid="text-unsupported-format"
               >
-                <AlertCircle className="h-4 w-4 shrink-0" />
+                <AlertCircle size={20} />
                 This file format is not supported. Please upload a different
                 file.
               </motion.div>
@@ -132,10 +132,10 @@ export function ConversionPanel({
 
           {isError && job?.errorMessage && (
             <div
-              className="flex items-center gap-2 rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive"
+              className="flex items-center gap-2 rounded-lg border border-yellow-500/50 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-500"
               data-testid="text-conversion-error"
             >
-              <AlertCircle className="h-4 w-4 shrink-0" />
+              <AlertCircle size={20} />
               {job.errorMessage}
             </div>
           )}

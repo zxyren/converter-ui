@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Code, FileJson, FileText, Hash, Palette, Ruler } from "lucide-react";
+import { Code, FileJson, FileText, Hash, PaintBucket } from "lucide-react";
 import {
   DevToolPanel,
   InstantDevToolPanel,
@@ -23,7 +23,7 @@ const TOOLS = [
   {
     id: "color-converter",
     label: "Color Converter",
-    icon: Palette,
+    icon: PaintBucket,
     panel: "client",
   },
 ];
@@ -109,7 +109,7 @@ export default function DeveloperTools() {
           transition={{ duration: 0.35, delay: 0.1 }}
           className="w-full shrink-0 md:w-52"
         >
-          <p className="mb-2 px-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <p className="mb-2 px-1 text-xs font-black uppercase tracking-wider text-muted-foreground">
             Tools
           </p>
           <nav className="flex flex-col gap-1">
@@ -118,13 +118,13 @@ export default function DeveloperTools() {
                 key={id}
                 onClick={() => setActiveTool(id)}
                 data-testid={`button-tool-${id}`}
-                className={`flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-left transition-colors ${
+                className={`flex items-center gap-2.5 cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-left transition-colors ${
                   activeTool === id
                     ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                 }`}
               >
-                <Icon className="h-3.5 w-3.5 shrink-0" />
+                <Icon size={16} />
                 {label}
               </button>
             ))}
@@ -140,7 +140,7 @@ export default function DeveloperTools() {
           className="flex-1 rounded-2xl border border-border bg-card p-6 shadow-sm"
         >
           <div className="mb-5 flex items-center gap-2">
-            <active.icon className="h-4 w-4 text-primary" />
+            <active.icon size={16} className="text-primary" />
             <h2 className="font-semibold text-foreground">{active.label}</h2>
           </div>
 
