@@ -15,7 +15,7 @@ export async function convertFile(
   file: File,
   outputFormat: string,
   options?: Record<string, string>,
-): Promise<{ job_id: string; result_url?: string }> {
+): Promise<{ job_id: string; result_url?: string; result_size_bytes?: number }> {
   const route = CATEGORY_ROUTE_MAP[category];
   if (!route) {
     throw new Error(`Unsupported conversion category: ${category}`);
@@ -38,7 +38,11 @@ export async function convertFile(
   });
 
   const resultUrl = URL.createObjectURL(res.data);
-  return { job_id: `direct-${Date.now()}`, result_url: resultUrl };
+  return {
+    job_id: `direct-${Date.now()}`,
+    result_url: resultUrl,
+    result_size_bytes: res.data.size,
+  };
 }
 
 export async function getJobStatus(jobId: string): Promise<{

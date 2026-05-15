@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Download, CheckCircle, RotateCcw } from "lucide-react";
+import { Download, FolderDown, FolderSync } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface DownloadSectionProps {
   resultUrl?: string;
   outputFormat: string;
   fileName: string;
+  resultSizeBytes?: number;
   onReset: () => void;
 }
 
@@ -45,11 +47,61 @@ export function DownloadSection({
   resultUrl,
   outputFormat,
   fileName,
+  resultSizeBytes,
   onReset,
 }: DownloadSectionProps) {
+  const [isSaving, setIsSaving] = useState(false);
   const baseName = fileName.replace(/\.[^.]+$/, "");
   const downloadName = `${baseName}.${outputFormat}`;
   const previewCategory = getPreviewCategory(outputFormat);
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+  };
+
+  const handleSaveTo = async () => {
+    if (!resultUrl || isSaving) return;
+
+    setIsSaving(true);
+    try {
+      const response = await fetch(resultUrl);
+      const blob = await response.blob();
+      const picker = (window as any).showSaveFilePicker;
+
+      if (picker) {
+        const fileHandle = await picker({
+          suggestedName: downloadName,
+          types: [
+            {
+              description: `${outputFormat.toUpperCase()} file`,
+              accept: { "*/*": [`.${outputFormat.toLowerCase()}`] },
+            },
+          ],
+        });
+
+        if (fileHandle) {
+          const writable = await fileHandle.createWritable();
+          await writable.write(blob);
+          await writable.close();
+          return;
+        }
+      }
+
+      const link = document.createElement("a");
+      link.href = resultUrl;
+      link.download = downloadName;
+      link.click();
+    } catch (error) {
+      console.error("Save to failed", error);
+      alert(
+        "Save to folder failed. Your browser may not support the file picker API. Use Download instead.",
+      );
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   return (
     <motion.div
@@ -97,8 +149,13 @@ export function DownloadSection({
         <p className="mt-0.5 text-sm text-muted-foreground">
           Your file is ready to download.
         </p>
+        {resultSizeBytes !== undefined && (
+          <p className="text-sm text-muted-foreground">
+            Size: {formatFileSize(resultSizeBytes)}
+          </p>
+        )}
       </div>
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3 justify-center">
         {resultUrl ? (
           <Button asChild data-testid="button-download">
             <a href={resultUrl} download={downloadName}>
@@ -114,10 +171,19 @@ export function DownloadSection({
         )}
         <Button
           variant="outline"
+          onClick={handleSaveTo}
+          disabled={!resultUrl || isSaving}
+          data-testid="button-save-to"
+        >
+          <FolderDown size={20} />
+          {isSaving ? "Saving..." : "Save to..."}
+        </Button>
+        <Button
+          variant="outline"
           onClick={onReset}
           data-testid="button-convert-another"
         >
-          <RotateCcw size={20} />
+          <FolderSync size={20} />
           Convert another
         </Button>
       </div>

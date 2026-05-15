@@ -181,6 +181,7 @@ export function ConversionPanel({
           resultUrl={job.resultUrl}
           outputFormat={job.outputFormat}
           fileName={job.file.name}
+          resultSizeBytes={job.resultSizeBytes}
           onReset={handleClear}
         />
       )}

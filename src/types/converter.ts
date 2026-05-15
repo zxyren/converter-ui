@@ -17,6 +17,7 @@ export interface ConversionJob {
   status: 'idle' | 'uploading' | 'processing' | 'done' | 'error';
   progress: number;
   resultUrl?: string;
+  resultSizeBytes?: number;
   errorMessage?: string;
 }
 

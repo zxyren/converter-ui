@@ -44,6 +44,7 @@ export function useConversion(category: string) {
                   status: 'done',
                   progress: 100,
                   resultUrl: conversion.result_url,
+                  resultSizeBytes: conversion.result_size_bytes,
                 }
               : prev
           );

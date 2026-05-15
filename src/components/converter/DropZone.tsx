@@ -1,6 +1,14 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Upload, FileText, X, Image, Video, Music, Type } from "lucide-react";
+import {
+  FileText,
+  X,
+  Image,
+  Video,
+  Music,
+  Type,
+  Paperclip,
+} from "lucide-react";
 import { formatFileSize, validateFileSize } from "../../utils/fileDetection";
 import { Button } from "@/components/ui/button";
 
@@ -227,15 +235,15 @@ export function DropZone({
         <motion.div
           animate={{ y: isDragging ? -4 : 0 }}
           transition={{ duration: 0.2 }}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10"
         >
-          <Upload size={23} className="text-primary" />
+          <Paperclip size={23} className="text-primary" />
         </motion.div>
         <div>
           <p className="text-sm font-semibold text-foreground">
             Drop your file here, or <span className="text-primary">browse</span>
           </p>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 text-xs font-medium text-muted-foreground">
             Up to 500 MB supported
           </p>
         </div>
