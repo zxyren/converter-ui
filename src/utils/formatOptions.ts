@@ -8,7 +8,6 @@ export const CATEGORY_FORMAT_MAP: Record<string, Record<string, string[]>> = {
     png: ["jpg", "webp", "gif", "bmp", "ico"],
     webp: ["jpg", "png", "gif"],
     heic: ["jpg", "png", "webp"],
-    svg: ["png", "jpg", "webp", "avif", "tiff", "ico"],
     bmp: ["jpg", "png", "webp"],
     gif: ["png", "webp"],
 
@@ -51,7 +50,6 @@ const MIME_TO_EXT: Record<string, string> = {
   "image/webp": "webp",
   "image/gif": "gif",
   "image/bmp": "bmp",
-  "image/svg+xml": "svg",
   "image/heic": "heic",
   "video/mp4": "mp4",
   "video/quicktime": "mov",
@@ -94,7 +92,12 @@ export function getAvailableOutputsForFile(
   const ext = getFileExtension(file);
   // Try exact extension match first
   let direct = getAvailableOutputsForCategory(ext, category);
-  if (category === 'video' && ext && direct.length > 0 && !direct.includes(ext)) {
+  if (
+    category === "video" &&
+    ext &&
+    direct.length > 0 &&
+    !direct.includes(ext)
+  ) {
     direct = [...direct, ext];
   }
   if (direct.length > 0) return direct;
@@ -102,7 +105,12 @@ export function getAvailableOutputsForFile(
   const mimeExt = MIME_TO_EXT[file.type];
   if (mimeExt && mimeExt !== ext) {
     let fallback = getAvailableOutputsForCategory(mimeExt, category);
-    if (category === 'video' && mimeExt && fallback.length > 0 && !fallback.includes(mimeExt)) {
+    if (
+      category === "video" &&
+      mimeExt &&
+      fallback.length > 0 &&
+      !fallback.includes(mimeExt)
+    ) {
       fallback = [...fallback, mimeExt];
     }
     if (fallback.length > 0) return fallback;

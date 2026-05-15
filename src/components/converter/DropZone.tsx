@@ -1,17 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import {
-  Upload,
-  FileText,
-  X,
-  Image,
-  Video,
-  Music,
-  Type,
-  FileAudio,
-  FileVideo,
-  FileImage,
-} from "lucide-react";
+import { Upload, FileText, X, Image, Video, Music, Type } from "lucide-react";
 import { formatFileSize, validateFileSize } from "../../utils/fileDetection";
 import { Button } from "@/components/ui/button";
 

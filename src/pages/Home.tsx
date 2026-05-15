@@ -1,61 +1,95 @@
-import { motion } from 'framer-motion';
-import { Link } from 'wouter';
-import { ArrowRight, FileImage, Film, Music, Type, Code, Shield, Zap, Globe, Layers } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { motion } from "framer-motion";
+import { Link } from "wouter";
+import {
+  ArrowRight,
+  FileImage,
+  Film,
+  Music,
+  Type,
+  Code,
+  Shield,
+  Zap,
+  Globe,
+  Layers,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const CATEGORIES = [
   {
-    href: '/convert/image',
+    href: "/convert/image",
     icon: FileImage,
-    label: 'Image',
-    description: 'JPG, PNG, WEBP, HEIC, SVG, BMP, GIF',
-    color: 'from-cyan-500/20 to-blue-500/20',
-    iconColor: 'text-cyan-500',
+    label: "Image",
+    description: "JPG, PNG, WEBP, HEIC, BMP, GIF",
+    color: "from-cyan-500/20 to-blue-500/20",
+    iconColor: "text-cyan-500",
   },
   {
-    href: '/convert/video',
+    href: "/convert/video",
     icon: Film,
-    label: 'Video',
-    description: 'MP4, AVI, MOV, MKV, GIF, Audio extraction',
-    color: 'from-violet-500/20 to-purple-500/20',
-    iconColor: 'text-violet-500',
+    label: "Video",
+    description: "MP4, AVI, MOV, MKV, GIF, Audio extraction",
+    color: "from-violet-500/20 to-purple-500/20",
+    iconColor: "text-violet-500",
   },
   {
-    href: '/convert/audio',
+    href: "/convert/audio",
     icon: Music,
-    label: 'Audio',
-    description: 'MP3, WAV, AAC, FLAC, OGG conversions',
-    color: 'from-emerald-500/20 to-teal-500/20',
-    iconColor: 'text-emerald-500',
+    label: "Audio",
+    description: "MP3, WAV, AAC, FLAC, OGG conversions",
+    color: "from-emerald-500/20 to-teal-500/20",
+    iconColor: "text-emerald-500",
   },
   {
-    href: '/convert/font',
+    href: "/convert/font",
     icon: Type,
-    label: 'Font',
-    description: 'TTF, OTF, WOFF, variable fonts',
-    color: 'from-orange-500/20 to-amber-500/20',
-    iconColor: 'text-orange-500',
+    label: "Font",
+    description: "TTF, OTF, WOFF, variable fonts",
+    color: "from-orange-500/20 to-amber-500/20",
+    iconColor: "text-orange-500",
   },
   {
-    href: '/convert/developer',
+    href: "/convert/developer",
     icon: Code,
-    label: 'Developer',
-    description: 'JSON, XML, YAML, Base64, Color, Markdown',
-    color: 'from-rose-500/20 to-pink-500/20',
-    iconColor: 'text-rose-500',
+    label: "Developer",
+    description: "JSON, XML, YAML, Base64, Color, Markdown",
+    color: "from-rose-500/20 to-pink-500/20",
+    iconColor: "text-rose-500",
   },
 ];
 
 const FEATURES = [
-  { icon: Zap, title: 'Instant conversion', description: 'Upload, convert, download — the whole flow in seconds.' },
-  { icon: Shield, title: 'No sign-up needed', description: 'Your files are processed and immediately deleted. Zero accounts.' },
-  { icon: Globe, title: 'Any format', description: 'Images, videos, audio, fonts, and developer data — all in one place.' },
-  { icon: Layers, title: 'Batch-ready', description: 'Built for modern workflows. Connect to the API for high-volume conversion.' },
+  {
+    icon: Zap,
+    title: "Instant conversion",
+    description: "Upload, convert, download — the whole flow in seconds.",
+  },
+  {
+    icon: Shield,
+    title: "No sign-up needed",
+    description:
+      "Your files are processed and immediately deleted. Zero accounts.",
+  },
+  {
+    icon: Globe,
+    title: "Any format",
+    description:
+      "Images, videos, audio, fonts, and developer data — all in one place.",
+  },
+  {
+    icon: Layers,
+    title: "Batch-ready",
+    description:
+      "Built for modern workflows. Connect to the API for high-volume conversion.",
+  },
 ];
 
 const stagger = {
   container: { transition: { staggerChildren: 0.07 } },
-  item: { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.4 } },
+  item: {
+    initial: { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.4 },
+  },
 };
 
 export default function Home() {
@@ -82,17 +116,27 @@ export default function Home() {
             <span className="text-primary">Instantly.</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground md:text-xl">
-            A universal file converter for images, video, audio, fonts, and developer data.
-            Drop a file. Pick a format. Done.
+            A universal file converter for images, video, audio, fonts, and
+            developer data. Drop a file. Pick a format. Done.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" className="gap-2 px-8" data-testid="button-start-converting">
+            <Button
+              asChild
+              size="lg"
+              className="gap-2 px-8"
+              data-testid="button-start-converting"
+            >
               <Link href="/convert/image">
                 Start converting
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" data-testid="button-view-tools">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              data-testid="button-view-tools"
+            >
               <Link href="/convert/developer">Developer tools</Link>
             </Button>
           </div>
@@ -109,27 +153,33 @@ export default function Home() {
             variants={stagger.container}
             className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
           >
-            {CATEGORIES.map(({ href, icon: Icon, label, description, color, iconColor }) => (
-              <motion.div key={href} variants={stagger.item}>
-                <Link
-                  href={href}
-                  data-testid={`card-category-${label.toLowerCase()}`}
-                  className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
-                >
-                  <div className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${color}`}>
-                    <Icon className={`h-5 w-5 ${iconColor}`} />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">{label}</p>
-                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{description}</p>
-                  </div>
-                  <div className="mt-auto flex items-center gap-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                    Convert now
-                    <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+            {CATEGORIES.map(
+              ({ href, icon: Icon, label, description, color, iconColor }) => (
+                <motion.div key={href} variants={stagger.item}>
+                  <Link
+                    href={href}
+                    data-testid={`card-category-${label.toLowerCase()}`}
+                    className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
+                  >
+                    <div
+                      className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${color}`}
+                    >
+                      <Icon className={`h-5 w-5 ${iconColor}`} />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">{label}</p>
+                      <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                        {description}
+                      </p>
+                    </div>
+                    <div className="mt-auto flex items-center gap-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                      Convert now
+                      <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                    </div>
+                  </Link>
+                </motion.div>
+              ),
+            )}
           </motion.div>
         </div>
       </section>
@@ -144,8 +194,12 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="text-2xl font-bold text-foreground md:text-3xl">Built for speed</h2>
-            <p className="mt-2 text-muted-foreground">No bloat. No friction. Just results.</p>
+            <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+              Built for speed
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              No bloat. No friction. Just results.
+            </p>
           </motion.div>
           <motion.div
             initial="initial"
@@ -164,7 +218,9 @@ export default function Home() {
                   <Icon className="h-4.5 w-4.5 text-primary" />
                 </div>
                 <p className="font-semibold text-foreground">{title}</p>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{description}</p>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+                  {description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -180,9 +236,12 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-2xl px-4 text-center md:px-6"
         >
-          <h2 className="text-2xl font-bold text-foreground md:text-3xl">Ready to convert?</h2>
+          <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+            Ready to convert?
+          </h2>
           <p className="mt-3 text-muted-foreground">
-            Choose a tool and start converting in seconds — no account, no waiting.
+            Choose a tool and start converting in seconds — no account, no
+            waiting.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {CATEGORIES.map(({ href, label, icon: Icon }) => (
