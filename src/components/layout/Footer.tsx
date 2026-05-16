@@ -1,4 +1,11 @@
-import { CodeXml, Film, Image, Music, Type as TypeIcon } from "lucide-react";
+import {
+  CodeXml,
+  Film,
+  House,
+  Image,
+  Music,
+  Type as TypeIcon,
+} from "lucide-react";
 import { Link } from "wouter";
 
 const FOOTER_TOOLS = [
@@ -65,8 +72,9 @@ export function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="transition-colors hover:text-foreground"
+                  className="transition-colors flex items-center gap-2 hover:text-foreground"
                 >
+                  <House size={16} />
                   Home
                 </Link>
               </li>

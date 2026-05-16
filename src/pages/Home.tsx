@@ -7,10 +7,10 @@ import {
   Music,
   Type,
   Code,
-  Shield,
   Zap,
-  Globe,
-  Layers,
+  UserX,
+  ShieldCheck,
+  FileCheck2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -64,22 +64,22 @@ const FEATURES = [
     description: "Upload, convert, download — the whole flow in seconds.",
   },
   {
-    icon: Shield,
+    icon: UserX,
     title: "No sign-up needed",
     description:
       "Your files are processed and immediately deleted. Zero accounts.",
   },
   {
-    icon: Globe,
+    icon: FileCheck2,
     title: "Any format",
     description:
       "Images, videos, audio, fonts, and developer data — all in one place.",
   },
   {
-    icon: Layers,
-    title: "Batch-ready",
+    icon: ShieldCheck,
+    title: "Privacy first",
     description:
-      "Built for modern workflows. Connect to the API for high-volume conversion.",
+      "Uploaded files are never saved to the server — they stay in your local storage only.",
   },
 ];
 
