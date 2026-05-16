@@ -157,9 +157,9 @@ export function DropZone({
   if (currentFile) {
     const IconComponent = getIcon(category);
     return (
-      <div className="rounded-xl border border-border bg-card p-5 flex items-center justify-between gap-4">
+      <div className="rounded-xl border border-border bg-card p-3 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-primary/10">
+          <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-primary/10">
             {previewUrl ? (
               category === "image" ? (
                 <img
@@ -184,32 +184,36 @@ export function DropZone({
               <IconComponent className="h-7 w-7 text-primary" />
             )}
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0 flex flex-col items-start gap-1">
             <p
-              className="text-sm font-medium text-foreground truncate"
+              className="text-base font-medium text-foreground truncate"
               data-testid="text-filename"
             >
               {currentFile.name}
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               {formatFileSize(currentFile.size)}
             </p>
             {duration !== null && category === "video" && (
-              <p className="mt-1 text-xs text-muted-foreground">
-                Duration: {formatDuration(duration)}
+              <p className="mt-1 text-sm text-muted-foreground">
+                <span className="font-bold">Duration:</span>{" "}
+                <span className="font-mono">{formatDuration(duration)}</span>
               </p>
             )}
           </div>
         </div>
         {onClear && (
           <Button
-            variant="ghost"
+            variant="destructive"
             size="icon"
             onClick={onClear}
             data-testid="button-clear-file"
-            className="h-8 w-8 shrink-0"
+            className="h-8 w-8 group"
           >
-            <X className="h-4 w-4" />
+            <X
+              size={16}
+              className="group-hover:rotate-90 duration-300 transition-all"
+            />
           </Button>
         )}
       </div>

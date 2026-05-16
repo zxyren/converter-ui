@@ -71,7 +71,7 @@ export function ConverterPage({
           {supportedInputs.map((ext) => (
             <span
               key={ext}
-              className="rounded-sm border border-primary/50 bg-secondary/10 px-2.5 py-1 text-xs font-medium text-foreground uppercase"
+              className="rounded-sm font-mono border border-secondary bg-secondary/10 px-2.5 py-1 text-xs font-medium text-foreground uppercase"
             >
               {ext}
             </span>

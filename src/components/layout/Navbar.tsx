@@ -33,12 +33,14 @@ export function Navbar() {
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 md:px-6">
         <Link
           href="/"
-          className="flex items-center gap-2 font-bold text-foreground"
+          className="flex w-fit items-center gap-3 text-foreground transition-opacity hover:opacity-90"
         >
-          <div className="flex h-8 w-8 items-center justify-center">
-            <img src="/logo.png" alt="Docvert Logo" />
+          <div className="flex size-10 items-center justify-center overflow-hidden rounded-lg border border-border bg-background shadow-sm">
+            <img src="/logo.png" alt="" className="size-10 object-contain" />
           </div>
-          <span className="text-base tracking-tight">Docvert</span>
+          <span className="text-base font-semibold tracking-tight">
+            Docvert
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
