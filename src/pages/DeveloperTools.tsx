@@ -40,7 +40,7 @@ const TOOL_CONFIG: Record<
   "xml-json": {
     inputLabel: "XML",
     outputLabel: "JSON",
-    inputPlaceholder: "<root><key>value</key></root>",
+    inputPlaceholder: "<root>\n  <key>Value</key>\n</root>\n",
   },
   "yaml-json": {
     inputLabel: "YAML",
