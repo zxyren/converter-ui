@@ -86,6 +86,21 @@ function getIcon(category: string) {
   }
 }
 
+function getFontFormat(ext: string) {
+  switch (ext) {
+    case "woff2":
+      return "woff2";
+    case "woff":
+      return "woff";
+    case "ttf":
+      return "truetype";
+    case "otf":
+      return "opentype";
+    default:
+      return undefined;
+  }
+}
+
 export function DropZone({
   accept,
   onFile,
@@ -97,6 +112,11 @@ export function DropZone({
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [fontPreview, setFontPreview] = useState<{
+    family: string;
+    url: string;
+    format: string;
+  } | null>(null);
   const [duration, setDuration] = useState<number | null>(null);
   const category = currentFile ? getFileCategory(currentFile) : "other";
 
@@ -141,8 +161,27 @@ export function DropZone({
     if (currentFile && (category === "image" || category === "video")) {
       url = URL.createObjectURL(currentFile);
       setPreviewUrl(url);
+      setFontPreview(null);
     } else {
       setPreviewUrl(null);
+    }
+
+    if (currentFile && category === "font") {
+      const ext = currentFile.name.split(".").pop()?.toLowerCase() ?? "";
+      const format = getFontFormat(ext);
+
+      if (format) {
+        url = URL.createObjectURL(currentFile);
+        setFontPreview({
+          family: `uploaded-font-${Math.random().toString(36).slice(2, 8)}`,
+          url,
+          format,
+        });
+      } else {
+        setFontPreview(null);
+      }
+    } else if (category !== "font") {
+      setFontPreview(null);
     }
 
     if (!currentFile || category !== "video") {
@@ -156,11 +195,23 @@ export function DropZone({
 
   if (currentFile) {
     const IconComponent = getIcon(category);
+    const previewText = "Abg";
+
     return (
       <div className="rounded-xl border border-border bg-card p-3 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
           <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-primary/10">
-            {previewUrl ? (
+            {fontPreview ? (
+              <>
+                <style>{`@font-face { font-family: '${fontPreview.family}'; src: url('${fontPreview.url}') format('${fontPreview.format}'); font-weight: 400; font-style: normal; }`}</style>
+                <span
+                  className="text-2xl font-semibold leading-none text-primary"
+                  style={{ fontFamily: fontPreview.family }}
+                >
+                  {previewText}
+                </span>
+              </>
+            ) : previewUrl ? (
               category === "image" ? (
                 <img
                   src={previewUrl}
