@@ -53,7 +53,7 @@ export function Navbar() {
                 data-testid={`nav-link-${label.toLowerCase()}`}
                 className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                   active
-                    ? "bg-primary/10 text-primary"
+                    ? "bg-primary/20 outline outline-primary/50 outline-offset-1 text-primary"
                     : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                 }`}
               >
