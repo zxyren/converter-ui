@@ -1,16 +1,8 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import {
-  FileText,
-  X,
-  Image,
-  Video,
-  Music,
-  Type,
-  Paperclip,
-} from "lucide-react";
-import { formatFileSize, validateFileSize } from "../../utils/fileDetection";
-import { Button } from "@/components/ui/button";
+import { Paperclip } from "lucide-react";
+import { validateFileSize } from "../../utils/fileDetection";
+import { FilePreview } from "./FilePreview";
 
 const IMAGE_EXTENSIONS = new Set([
   "jpg",
@@ -69,21 +61,6 @@ function formatDuration(seconds: number) {
   }
 
   return `${minutes}:${padded(secs)}`;
-}
-
-function getIcon(category: string) {
-  switch (category) {
-    case "image":
-      return Image;
-    case "video":
-      return Video;
-    case "audio":
-      return Music;
-    case "font":
-      return Type;
-    default:
-      return FileText;
-  }
 }
 
 function getFontFormat(ext: string) {
@@ -194,80 +171,16 @@ export function DropZone({
   }, [currentFile, category]);
 
   if (currentFile) {
-    const IconComponent = getIcon(category);
-    const previewText = "Abg";
-
     return (
-      <div className="rounded-xl border border-border bg-card p-3 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-primary/10">
-            {fontPreview ? (
-              <>
-                <style>{`@font-face { font-family: '${fontPreview.family}'; src: url('${fontPreview.url}') format('${fontPreview.format}'); font-weight: 400; font-style: normal; }`}</style>
-                <span
-                  className="text-2xl font-semibold leading-none text-primary"
-                  style={{ fontFamily: fontPreview.family }}
-                >
-                  {previewText}
-                </span>
-              </>
-            ) : previewUrl ? (
-              category === "image" ? (
-                <img
-                  src={previewUrl}
-                  alt={currentFile.name}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <video
-                  src={previewUrl}
-                  className="h-full w-full object-cover"
-                  muted
-                  loop
-                  playsInline
-                  autoPlay
-                  onLoadedMetadata={(e) =>
-                    setDuration(e.currentTarget.duration)
-                  }
-                />
-              )
-            ) : (
-              <IconComponent className="h-7 w-7 text-primary" />
-            )}
-          </div>
-          <div className="min-w-0 flex flex-col items-start gap-1">
-            <p
-              className="text-base font-medium text-foreground truncate"
-              data-testid="text-filename"
-            >
-              {currentFile.name}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              {formatFileSize(currentFile.size)}
-            </p>
-            {duration !== null && category === "video" && (
-              <p className="mt-1 text-sm text-muted-foreground">
-                <span className="font-bold">Duration:</span>{" "}
-                <span className="font-mono">{formatDuration(duration)}</span>
-              </p>
-            )}
-          </div>
-        </div>
-        {onClear && (
-          <Button
-            variant="destructive"
-            size="icon"
-            onClick={onClear}
-            data-testid="button-clear-file"
-            className="h-8 w-8 group"
-          >
-            <X
-              size={16}
-              className="group-hover:rotate-90 duration-300 transition-all"
-            />
-          </Button>
-        )}
-      </div>
+      <FilePreview
+        file={currentFile}
+        category={category}
+        previewUrl={previewUrl}
+        fontPreview={fontPreview}
+        duration={duration}
+        onClear={onClear}
+        onVideoLoadedMetadata={setDuration}
+      />
     );
   }
 
@@ -281,7 +194,7 @@ export function DropZone({
         onDragLeave={onDragLeave}
         onClick={() => !disabled && inputRef.current?.click()}
         data-testid="dropzone"
-        className={`relative flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed px-6 py-12 text-center transition-colors ${
+        className={`relative w-full flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed px-6 py-12 text-center transition-colors ${
           isDragging
             ? "border-primary bg-primary/5"
             : "border-border bg-card hover:border-primary/50 hover:bg-primary/5"

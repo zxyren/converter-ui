@@ -1,0 +1,158 @@
+import { FileText, Image, Video, Music, Type, X } from "lucide-react";
+import { formatFileSize } from "../../utils/fileDetection";
+import { Button } from "@/components/ui/button";
+
+interface FontPreview {
+  family: string;
+  url: string;
+  format: string;
+}
+
+interface FilePreviewProps {
+  file: File;
+  category: "image" | "video" | "audio" | "font" | "other";
+  previewUrl: string | null;
+  fontPreview: FontPreview | null;
+  duration: number | null;
+  onClear?: () => void;
+  onVideoLoadedMetadata?: (duration: number) => void;
+}
+
+function getIcon(category: string) {
+  switch (category) {
+    case "image":
+      return Image;
+    case "video":
+      return Video;
+    case "audio":
+      return Music;
+    case "font":
+      return Type;
+    default:
+      return FileText;
+  }
+}
+
+function formatDuration(seconds: number) {
+  const rounded = Math.round(seconds);
+  const hours = Math.floor(rounded / 3600);
+  const minutes = Math.floor((rounded % 3600) / 60);
+  const secs = rounded % 60;
+  const padded = (value: number) => value.toString().padStart(2, "0");
+
+  if (hours > 0) {
+    return `${padded(hours)}:${padded(minutes)}:${padded(secs)}`;
+  }
+
+  return `${padded(minutes)}:${padded(secs)}`;
+}
+
+function getDisplayFileName(fileName: string, maxLength = 28) {
+  if (fileName.length <= maxLength) return fileName;
+
+  const dotIndex = fileName.lastIndexOf(".");
+  if (dotIndex === -1 || dotIndex === 0) {
+    return `${fileName.slice(0, maxLength - 3)}...`;
+  }
+
+  const extension = fileName.slice(dotIndex);
+  const baseName = fileName.slice(0, dotIndex);
+  const maxBaseLength = maxLength - extension.length - 3;
+
+  if (maxBaseLength <= 0) {
+    return `...${extension}`;
+  }
+
+  return `${baseName.slice(0, maxBaseLength)}...${extension}`;
+}
+
+export function FilePreview({
+  file,
+  category,
+  previewUrl,
+  fontPreview,
+  duration,
+  onClear,
+  onVideoLoadedMetadata,
+}: FilePreviewProps) {
+  const IconComponent = getIcon(category);
+  const previewText = "Abg";
+  const displayName = getDisplayFileName(file.name);
+
+  return (
+    <div className="relative w-full max-w-full rounded-xl border border-border bg-card p-4 shadow-sm sm:p-5">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex min-w-0 items-center gap-3">
+          <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-primary/10 sm:h-24 sm:w-24">
+            {fontPreview ? (
+              <>
+                <style>{`@font-face { font-family: '${fontPreview.family}'; src: url('${fontPreview.url}') format('${fontPreview.format}'); font-weight: 400; font-style: normal; }`}</style>
+                <span
+                  className="text-2xl font-semibold leading-none text-primary"
+                  style={{ fontFamily: fontPreview.family }}
+                >
+                  {previewText}
+                </span>
+              </>
+            ) : previewUrl ? (
+              category === "image" ? (
+                <img
+                  src={previewUrl}
+                  alt={file.name}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <video
+                  src={previewUrl}
+                  className="h-full w-full object-cover"
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  onLoadedMetadata={(e) =>
+                    onVideoLoadedMetadata?.(e.currentTarget.duration)
+                  }
+                />
+              )
+            ) : (
+              <IconComponent className="h-7 w-7 text-primary" />
+            )}
+          </div>
+          <div className="min-w-0 flex-1">
+            <p
+              className="text-base font-semibold text-foreground truncate"
+              title={file.name}
+              data-testid="text-filename"
+            >
+              {displayName}
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {formatFileSize(file.size)}
+            </p>
+            {duration !== null && category === "video" && (
+              <p className="mt-1 text-sm text-muted-foreground">
+                <span className="font-semibold">Duration:</span>{" "}
+                <span className="font-mono">{formatDuration(duration)}</span>
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {onClear && (
+        <Button
+          variant="destructive"
+          size="icon"
+          onClick={onClear}
+          data-testid="button-clear-file"
+          className="absolute right-2 top-2 h-8 w-8 sm:right-2 sm:top-2"
+        >
+          <X
+            size={16}
+            className="group-hover:rotate-90 duration-300 transition-all"
+          />
+        </Button>
+      )}
+    </div>
+  );
+}

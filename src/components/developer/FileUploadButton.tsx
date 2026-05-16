@@ -84,7 +84,7 @@ export function FileUploadButton({
               onClick={() => fileInputRef.current?.click()}
               data-testid="button-devtool-upload"
             >
-              <FileText size={16} />
+              <FileText size={20} className="text-primary" />
               <span className="truncate">{uploadedFile.name}</span>
             </Button>
             <Button
@@ -112,7 +112,7 @@ export function FileUploadButton({
           onClick={() => fileInputRef.current?.click()}
           data-testid="button-devtool-upload"
         >
-          <FileUp size={16} className="shrink-0" />
+          <FileUp size={20} className="shrink-0" />
           Upload File
         </Button>
       )}

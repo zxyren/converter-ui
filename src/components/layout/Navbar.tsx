@@ -43,7 +43,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-3 md:flex">
           {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
             const active = location.startsWith(href);
             return (
