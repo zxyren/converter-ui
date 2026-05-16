@@ -155,11 +155,15 @@ export default function Home() {
           >
             {CATEGORIES.map(
               ({ href, icon: Icon, label, description, color, iconColor }) => (
-                <motion.div key={href} variants={stagger.item}>
+                <motion.div
+                  key={href}
+                  variants={stagger.item}
+                  className="h-full"
+                >
                   <Link
                     href={href}
                     data-testid={`card-category-${label.toLowerCase()}`}
-                    className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
+                    className="group flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
                   >
                     <div
                       className={`flex h-12 w-12 items-center justify-center rounded-sm bg-linear-to-tr ${color}`}
