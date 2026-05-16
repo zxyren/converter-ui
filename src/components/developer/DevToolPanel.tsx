@@ -248,7 +248,7 @@ export function MarkdownPanel() {
       toolId="md-html"
       inputLabel="Markdown"
       outputLabel="HTML Output"
-      inputPlaceholder="# Hello World\n\nWrite your **markdown** here..."
+      inputPlaceholder={`# Hello World\n\nWrite your **markdown** here...`}
     />
   );
 }
