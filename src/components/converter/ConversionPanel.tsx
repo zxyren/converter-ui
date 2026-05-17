@@ -142,7 +142,7 @@ export function ConversionPanel({
 
           {canConvert && (
             <Button
-              className="w-full"
+              className="w-full text-foreground"
               onClick={handleConvert}
               data-testid="button-convert"
             >
@@ -158,7 +158,7 @@ export function ConversionPanel({
             !outputFormat &&
             availableFormats.length > 0 &&
             !isConverting && (
-              <p className="text-center text-xs text-muted-foreground">
+              <p className="text-center text-sm text-yellow-400">
                 Select an output format above to continue
               </p>
             )}

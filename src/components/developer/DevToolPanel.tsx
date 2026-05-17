@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { Copy, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -65,6 +65,20 @@ export function DevToolPanel({
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null);
+
+  const colorPreview = useMemo(() => {
+    const hex = input.trim();
+    if (/^#?([a-fA-F0-9]{6})$/.test(hex)) {
+      return `#${hex.replace(/^#/, "")}`;
+    }
+    return null;
+  }, [input]);
+
+  const colorInputClass = useMemo(() => {
+    if (toolId !== "color-converter") return "";
+    if (!input.trim()) return "";
+    return colorPreview ? "ring-2 ring-emerald-400/40" : "ring-2 ring-rose-400/40";
+  }, [toolId, colorPreview, input]);
 
   // Ref to hold the debounce timer
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -149,17 +163,27 @@ export function DevToolPanel({
           <label className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
             {inputLabel}
           </label>
-          <Textarea
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-              if (uploadedFile) setUploadedFile(null);
-            }}
-            placeholder={inputPlaceholder}
-            rows={10}
-            data-testid="textarea-input"
-            className="font-mono text-sm resize-none mt-3 w-full"
-          />
+          <div className="relative mt-3">
+            <Textarea
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (uploadedFile) setUploadedFile(null);
+              }}
+              placeholder={inputPlaceholder}
+              rows={10}
+              data-testid="textarea-input"
+              className={`font-mono text-sm resize-none w-full ${colorInputClass}`}
+            />
+            {toolId === "color-converter" && (
+              <div className="absolute right-3 top-3 flex items-center">
+                <span
+                  className="inline-block h-6 w-6 rounded border border-border"
+                  style={{ backgroundColor: colorPreview ?? "transparent" }}
+                />
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Output pane */}

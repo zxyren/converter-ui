@@ -88,7 +88,7 @@ export function FilePreview({
               <>
                 <style>{`@font-face { font-family: '${fontPreview.family}'; src: url('${fontPreview.url}') format('${fontPreview.format}'); font-weight: 400; font-style: normal; }`}</style>
                 <span
-                  className="text-2xl font-semibold leading-none text-primary"
+                  className="text-2xl leading-none dark:text-white text-black"
                   style={{ fontFamily: fontPreview.family }}
                 >
                   {previewText}
@@ -120,18 +120,19 @@ export function FilePreview({
           </div>
           <div className="min-w-0 flex-1">
             <p
-              className="text-base font-semibold text-foreground truncate"
+              className="text-base mb-2 font-semibold text-foreground truncate"
               title={file.name}
               data-testid="text-filename"
             >
               {displayName}
             </p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {formatFileSize(file.size)}
+            <p className="text-sm text-muted-foreground">
+              <span className="font-semibold ">Size:</span>{" "}
+              <span className="font-mono">{formatFileSize(file.size)}</span>
             </p>
             {duration !== null && category === "video" && (
-              <p className="mt-1 text-sm text-muted-foreground">
-                <span className="font-semibold">Duration:</span>{" "}
+              <p className="text-sm text-muted-foreground">
+                <span className="font-semibold ">Duration:</span>{" "}
                 <span className="font-mono">{formatDuration(duration)}</span>
               </p>
             )}

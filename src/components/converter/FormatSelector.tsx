@@ -16,7 +16,7 @@ export function FormatSelector({
 
   return (
     <div>
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <p className="mb-3 font-semibold text-muted-foreground">
         Output format
       </p>
       <div className="flex flex-wrap gap-2">
@@ -30,7 +30,7 @@ export function FormatSelector({
               data-testid={`button-format-${fmt}`}
               className={`relative cursor-pointer flex items-center gap-1.5 rounded-md border px-3.5 py-2 text-sm font-semibold uppercase tracking-wide transition-all ${
                 isSelected
-                  ? "border-primary bg-primary/10 text-primary-foreground shadow-sm"
+                  ? "border-primary/50  bg-primary/5 text-foreground shadow-sm"
                   : "border-border bg-card text-foreground hover:border-primary/50 hover:bg-secondary"
               }`}
             >

@@ -171,7 +171,7 @@ textarea::-webkit-scrollbar-track {
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--accent));
+  background-color: hsl(var(--secondary));
   border-radius: 4px;
   border: 2px solid transparent;
   background-clip: content-box;

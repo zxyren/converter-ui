@@ -120,11 +120,11 @@ export default function DeveloperTools() {
                 data-testid={`button-tool-${id}`}
                 className={`flex items-center gap-2.5 cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-left transition-colors ${
                   activeTool === id
-                    ? "bg-primary/10 text-primary"
+                    ? "outline outline-primary/30 text-primary"
                     : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                 }`}
               >
-                <Icon size={16} />
+                <Icon size={20} />
                 {label}
               </button>
             ))}
@@ -140,7 +140,7 @@ export default function DeveloperTools() {
           className="flex-1 rounded-2xl border border-border bg-card p-6 shadow-sm"
         >
           <div className="mb-5 flex items-center gap-2">
-            <active.icon size={16} className="text-primary" />
+            <active.icon size={20} className="text-primary" />
             <h2 className="font-semibold text-foreground">{active.label}</h2>
           </div>
 
