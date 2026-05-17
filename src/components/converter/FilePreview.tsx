@@ -66,6 +66,19 @@ function getDisplayFileName(fileName: string, maxLength = 28) {
   return `${baseName.slice(0, maxBaseLength)}...${extension}`;
 }
 
+function getAudioGradient(fileName: string): string {
+  const hash = fileName.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const gradients = [
+    "from-purple-600 to-pink-600",
+    "from-blue-600 to-cyan-600",
+    "from-green-600 to-emerald-600",
+    "from-orange-600 to-red-600",
+    "from-indigo-600 to-purple-600",
+    "from-rose-600 to-pink-600",
+  ];
+  return gradients[hash % gradients.length];
+}
+
 export function FilePreview({
   file,
   category,
@@ -114,6 +127,10 @@ export function FilePreview({
                   }
                 />
               )
+            ) : category === "audio" ? (
+              <div className={`h-full w-full bg-linear-to-br ${getAudioGradient(file.name)} flex items-center justify-center`}>
+                <Music className="h-7 w-7 text-white" />
+              </div>
             ) : (
               <IconComponent className="h-7 w-7 text-primary" />
             )}
@@ -130,7 +147,7 @@ export function FilePreview({
               <span className="font-semibold ">Size:</span>{" "}
               <span className="font-mono">{formatFileSize(file.size)}</span>
             </p>
-            {duration !== null && category === "video" && (
+            {duration !== null && (category === "video" || category === "audio") && (
               <p className="text-sm text-muted-foreground">
                 <span className="font-semibold ">Duration:</span>{" "}
                 <span className="font-mono">{formatDuration(duration)}</span>

@@ -97,6 +97,15 @@ export function DropZone({
   const [duration, setDuration] = useState<number | null>(null);
   const category = currentFile ? getFileCategory(currentFile) : "other";
 
+  const extractAudioDuration = useCallback((file: File): Promise<number> => {
+    return new Promise((resolve, reject) => {
+      const audio = new Audio();
+      audio.onloadedmetadata = () => resolve(audio.duration);
+      audio.onerror = () => reject(new Error("Failed to load audio"));
+      audio.src = URL.createObjectURL(file);
+    });
+  }, []);
+
   const handleFile = useCallback(
     (file: File) => {
       const sizeError = validateFileSize(file);
@@ -161,14 +170,18 @@ export function DropZone({
       setFontPreview(null);
     }
 
-    if (!currentFile || category !== "video") {
+    if (currentFile && category === "audio") {
+      extractAudioDuration(currentFile)
+        .then(setDuration)
+        .catch(() => setDuration(null));
+    } else if (currentFile && category !== "video") {
       setDuration(null);
     }
 
     return () => {
       if (url) URL.revokeObjectURL(url);
     };
-  }, [currentFile, category]);
+  }, [currentFile, category, extractAudioDuration]);
 
   if (currentFile) {
     return (
