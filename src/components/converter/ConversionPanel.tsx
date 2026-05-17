@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, AlertCircle } from "lucide-react";
@@ -76,11 +76,27 @@ export function ConversionPanel({
   const canConvert = !!file && !!outputFormat && !isConverting && !isDone;
   const isKeepOriginal = !!outputFormat && outputFormat === inputFormat;
 
+  const acceptForCategory = useMemo(() => {
+    switch (category) {
+      case "image":
+        return "image/*";
+      case "video":
+        return "video/*";
+      case "audio":
+        return "audio/*";
+      case "font":
+        return ".ttf,.otf,.woff,.woff2";
+      default:
+        return undefined;
+    }
+  }, [category]);
+
   return (
     <div className="space-y-5">
       {!isDone && (
         <>
           <DropZone
+            accept={acceptForCategory}
             onFile={handleFile}
             currentFile={file}
             onClear={handleClear}
