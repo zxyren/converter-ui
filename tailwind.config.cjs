@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "sans-serif"],
+        sans: ["Google Sans", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       colors: {

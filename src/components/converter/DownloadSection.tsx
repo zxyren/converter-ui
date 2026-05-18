@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Download, FolderDown, FolderSync } from "lucide-react";
+import { Download, FilePlus2, FolderDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface DownloadSectionProps {
@@ -60,6 +60,23 @@ export function DownloadSection({
     if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
     return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
   };
+
+  const getFontFormat = (format: string) => {
+    switch (format.toLowerCase()) {
+      case "ttf":
+        return "truetype";
+      case "otf":
+        return "opentype";
+      case "woff":
+        return "woff";
+      case "woff2":
+        return "woff2";
+      default:
+        return format.toLowerCase();
+    }
+  };
+
+  const previewFontFamily = `${baseName.replace(/[^a-zA-Z0-9_-]/g, "-")}-preview`;
 
   const handleSaveTo = async () => {
     if (!resultUrl || isSaving) return;
@@ -134,11 +151,39 @@ export function DownloadSection({
             </div>
           )}
           {previewCategory === "font" && (
-            <div className="flex flex-col items-center gap-3 text-sm text-muted-foreground">
-              <p className="font-medium text-foreground">
-                Font conversion ready
-              </p>
-              <p>Download and install the converted font file.</p>
+            <div className="grid gap-4 text-left text-muted-foreground">
+              <div className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-4 sm:flex-row sm:items-center">
+                <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-primary/10">
+                  <style>{`@font-face { font-family: '${previewFontFamily}'; src: url('${resultUrl}') format('${getFontFormat(outputFormat)}'); font-weight: 400; font-style: normal; }`}</style>
+                  <span
+                    className="text-2xl text-foreground"
+                    style={{ fontFamily: `${previewFontFamily}, sans-serif` }}
+                  >
+                    Abg
+                  </span>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-base font-semibold text-foreground break-normal">
+                    {downloadName}
+                  </p>
+                  {resultSizeBytes !== undefined && (
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-semibold text-foreground">
+                        Size:
+                      </span>{" "}
+                      <span className="font-mono">
+                        {formatFileSize(resultSizeBytes)}
+                      </span>
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="text-sm">
+                <p className="font-medium text-foreground">
+                  Font conversion ready
+                </p>
+                <p>Download and install the converted font file.</p>
+              </div>
             </div>
           )}
         </div>
@@ -176,15 +221,15 @@ export function DownloadSection({
           data-testid="button-save-to"
         >
           <FolderDown size={20} />
-          {isSaving ? "Saving..." : "Save to..."}
+          {isSaving ? "Saving..." : "Save As..."}
         </Button>
         <Button
           variant="outline"
           onClick={onReset}
           data-testid="button-convert-another"
         >
-          <FolderSync size={20} />
-          Convert another
+          <FilePlus2 size={20} />
+          Convert Another
         </Button>
       </div>
     </motion.div>

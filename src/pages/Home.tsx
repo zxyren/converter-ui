@@ -166,9 +166,9 @@ export default function Home() {
                     className="group flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
                   >
                     <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-sm bg-linear-to-tr ${color}`}
+                      className={`flex h-12 w-12 items-center justify-center rounded-md bg-linear-to-tr ${color}`}
                     >
-                      <Icon className={`h-5 w-5 ${iconColor}`} />
+                      <Icon size={23} className={`${iconColor}`} />
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">{label}</p>
@@ -176,9 +176,12 @@ export default function Home() {
                         {description}
                       </p>
                     </div>
-                    <div className="mt-auto flex items-center gap-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                    <div className="mt-auto flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                       Convert now
-                      <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform group-hover:translate-x-0.5"
+                      />
                     </div>
                   </Link>
                 </motion.div>

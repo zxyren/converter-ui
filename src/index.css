@@ -4,9 +4,9 @@
 
 /* Local fonts */
 @font-face {
-  font-family: 'Plus Jakarta Sans';
+  font-family: 'Google Sans';
   font-style: normal;
-  src: url('/fonts/PlusJakartaSans.woff2') format('woff2');
+  src: url('/fonts/GoogleSans.woff2') format('woff2');
 }
 
 @font-face {
@@ -107,7 +107,7 @@
   --sidebar-accent-foreground: 224 71% 4%;
   --sidebar-ring: 199 89% 48%;
 
-  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
+  --app-font-sans: 'Google Sans', sans-serif;
   --app-font-mono: 'JetBrains Mono', monospace;
   --radius: 0.75rem;
 }
