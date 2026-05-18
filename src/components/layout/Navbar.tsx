@@ -10,7 +10,7 @@ import {
   Film,
   Music,
   Type,
-  Code,
+  CodeXml,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ const NAV_ITEMS = [
   { href: "/convert/video", label: "Video", icon: Film },
   { href: "/convert/audio", label: "Audio", icon: Music },
   { href: "/convert/font", label: "Font", icon: Type },
-  { href: "/convert/developer", label: "Developer", icon: Code },
+  { href: "/convert/developer", label: "Developer", icon: CodeXml },
 ];
 
 export function Navbar() {

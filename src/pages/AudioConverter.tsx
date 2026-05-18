@@ -1,5 +1,5 @@
-import { Music } from 'lucide-react';
-import { ConverterPage } from './ConverterPage';
+import { Music } from "lucide-react";
+import { ConverterPage } from "./ConverterPage";
 
 export default function AudioConverter() {
   return (
@@ -7,7 +7,7 @@ export default function AudioConverter() {
       title="Audio Converter"
       description="Convert between audio formats. Drop your audio file to see available output options."
       icon={Music}
-      iconColor="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+      iconColor="bg-lime-500/15 text-lime-600 dark:text-lime-500"
       category="audio"
     />
   );

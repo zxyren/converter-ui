@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Code, FileJson, FileText, Hash, PaintBucket } from "lucide-react";
+import { CodeXml, FileJson, FileText, Hash, PaintBucket } from "lucide-react";
 import {
   DevToolPanel,
   InstantDevToolPanel,
@@ -89,7 +89,7 @@ export default function DeveloperTools() {
       >
         <div className="mb-4 flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-md bg-rose-500/15 text-rose-600 dark:text-rose-400">
-            <Code size={23} />
+            <CodeXml size={23} />
           </div>
           <h1 className="text-2xl font-bold text-foreground">
             Developer Tools
