@@ -9,6 +9,7 @@ import ImageConverter from "./pages/ImageConverter";
 import VideoConverter from "./pages/VideoConverter";
 import AudioConverter from "./pages/AudioConverter";
 import FontConverter from "./pages/FontConverter";
+import DocumentConverter from "./pages/DocumentConverter";
 import DeveloperTools from "./pages/DeveloperTools";
 import NotFound from "./pages/not-found";
 
@@ -25,6 +26,7 @@ function Router() {
           <Route path="/convert/video" component={VideoConverter} />
           <Route path="/convert/audio" component={AudioConverter} />
           <Route path="/convert/font" component={FontConverter} />
+          <Route path="/convert/document" component={DocumentConverter} />
           <Route path="/convert/developer" component={DeveloperTools} />
           <Route component={NotFound} />
         </Switch>

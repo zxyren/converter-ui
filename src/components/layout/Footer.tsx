@@ -1,5 +1,6 @@
 import {
   CodeXml,
+  FileText,
   Film,
   House,
   Image,
@@ -13,6 +14,7 @@ const FOOTER_TOOLS = [
   { href: "/convert/video", label: "Video", icon: Film },
   { href: "/convert/audio", label: "Audio", icon: Music },
   { href: "/convert/font", label: "Font", icon: TypeIcon },
+  { href: "/convert/document", label: "Document", icon: FileText },
   { href: "/convert/developer", label: "Developer", icon: CodeXml },
 ];
 
@@ -39,7 +41,7 @@ export function Footer() {
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Enterprise-grade conversions in your browser — images, media,
-              fonts, and structured data formats. No accounts, predictable
+              documents, fonts, and structured data formats. No accounts, predictable
               results.
             </p>
           </div>

@@ -10,7 +10,7 @@ interface FontPreview {
 
 interface FilePreviewProps {
   file: File;
-  category: "image" | "video" | "audio" | "font" | "other";
+  category: "image" | "video" | "audio" | "font" | "document" | "other";
   previewUrl: string | null;
   fontPreview: FontPreview | null;
   duration: number | null;
@@ -28,6 +28,8 @@ function getIcon(category: string) {
       return Music;
     case "font":
       return Type;
+    case "document":
+      return FileText;
     default:
       return FileText;
   }
@@ -127,6 +129,12 @@ export function FilePreview({
                   }
                 />
               )
+            ) : category === "document" && previewUrl ? (
+              <iframe
+                src={previewUrl}
+                title={file.name}
+                className="h-full w-full rounded-lg bg-white"
+              />
             ) : category === "audio" ? (
               <div className={`h-full w-full bg-linear-to-br ${getAudioGradient(file.name)} flex items-center justify-center`}>
                 <Music className="h-7 w-7 text-white" />

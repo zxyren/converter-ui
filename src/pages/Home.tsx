@@ -6,6 +6,7 @@ import {
   Film,
   Music,
   Type,
+  FileText,
   Code,
   Zap,
   UserX,
@@ -48,6 +49,14 @@ const CATEGORIES = [
     iconColor: "text-teal-500",
   },
   {
+    href: "/convert/document",
+    icon: FileText,
+    label: "Document",
+    description: "Word (.doc, .docx) ↔ PDF conversion",
+    color: "from-amber-500/20 to-orange-500/20",
+    iconColor: "text-amber-500",
+  },
+  {
     href: "/convert/developer",
     icon: Code,
     label: "Developer",
@@ -73,7 +82,7 @@ const FEATURES = [
     icon: FileCheck2,
     title: "Any format",
     description:
-      "Images, videos, audio, fonts, and developer data — all in one place.",
+      "Images, videos, audio, fonts, documents, and developer data — all in one place.",
   },
   {
     icon: ShieldCheck,
@@ -116,7 +125,7 @@ export default function Home() {
             <span className="text-primary">Instantly.</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground md:text-xl">
-            A universal file converter for images, video, audio, fonts, and
+            A universal file converter for images, video, audio, fonts, documents, and
             developer data. Drop a file. Pick a format. Done.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -151,7 +160,7 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true, amount: 0.2 }}
             variants={stagger.container}
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
           >
             {CATEGORIES.map(
               ({ href, icon: Icon, label, description, color, iconColor }) => (

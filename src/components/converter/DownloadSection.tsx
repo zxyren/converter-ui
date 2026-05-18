@@ -13,7 +13,7 @@ interface DownloadSectionProps {
 
 function getPreviewCategory(
   format: string,
-): "image" | "video" | "audio" | "font" | "other" {
+): "image" | "video" | "audio" | "font" | "document" | "other" {
   const extension = format.toLowerCase();
   if (
     [
@@ -39,6 +39,9 @@ function getPreviewCategory(
   }
   if (["ttf", "otf", "woff", "woff2"].includes(extension)) {
     return "font";
+  }
+  if (extension === "pdf") {
+    return "document";
   }
   return "other";
 }
@@ -194,6 +197,13 @@ export function DownloadSection({
                 <p>Download and install the converted font file.</p>
               </div>
             </div>
+          )}
+          {previewCategory === "document" && (
+            <iframe
+              src={resultUrl}
+              title={`Converted ${outputFormat}`}
+              className="mx-auto h-72 w-full rounded-xl border border-border bg-white"
+            />
           )}
         </div>
       )}

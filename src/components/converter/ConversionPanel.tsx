@@ -99,6 +99,8 @@ export function ConversionPanel({
         return "audio/*";
       case "font":
         return ".ttf,.otf,.woff,.woff2";
+      case "document":
+        return ".doc,.docx,.pdf,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
       default:
         return undefined;
     }

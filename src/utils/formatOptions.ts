@@ -41,6 +41,11 @@ export const CATEGORY_FORMAT_MAP: Record<string, Record<string, string[]>> = {
     woff: ["ttf", "otf", "woff2"],
     woff2: ["ttf", "otf", "woff"],
   },
+  document: {
+    doc: ["pdf"],
+    docx: ["pdf"],
+    pdf: ["docx"],
+  },
 };
 
 // MIME type → extension lookup for detection fallback
@@ -70,6 +75,9 @@ const MIME_TO_EXT: Record<string, string> = {
   "font/otf": "otf",
   "font/woff": "woff",
   "font/woff2": "woff2",
+  "application/pdf": "pdf",
+  "application/msword": "doc",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
 };
 
 export function getFileExtension(file: File): string {

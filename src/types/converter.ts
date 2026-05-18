@@ -1,4 +1,4 @@
-export type ConverterCategory = 'image' | 'video' | 'audio' | 'font' | 'developer';
+export type ConverterCategory = 'image' | 'video' | 'audio' | 'font' | 'document' | 'developer';
 
 export interface ConversionOption {
   id: string;

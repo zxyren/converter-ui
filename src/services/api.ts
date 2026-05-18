@@ -6,6 +6,7 @@ const CATEGORY_ROUTE_MAP: Record<string, string> = {
   video: "videos",
   audio: "audio",
   font: "fonts",
+  document: "documents",
 };
 
 const api = axios.create({ baseURL: API_BASE });

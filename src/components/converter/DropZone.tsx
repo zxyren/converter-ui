@@ -27,6 +27,7 @@ const AUDIO_EXTENSIONS = new Set([
   "m4a",
 ]);
 const FONT_EXTENSIONS = new Set(["ttf", "otf", "woff", "woff2"]);
+const DOCUMENT_EXTENSIONS = new Set(["doc", "docx", "pdf"]);
 
 interface DropZoneProps {
   accept?: string;
@@ -38,7 +39,7 @@ interface DropZoneProps {
 
 function getFileCategory(
   file: File,
-): "image" | "video" | "audio" | "font" | "other" {
+): "image" | "video" | "audio" | "font" | "document" | "other" {
   const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
   if (IMAGE_EXTENSIONS.has(ext) || file.type.startsWith("image/"))
     return "image";
@@ -47,6 +48,15 @@ function getFileCategory(
   if (AUDIO_EXTENSIONS.has(ext) || file.type.startsWith("audio/"))
     return "audio";
   if (FONT_EXTENSIONS.has(ext)) return "font";
+  if (
+    DOCUMENT_EXTENSIONS.has(ext) ||
+    file.type === "application/pdf" ||
+    file.type === "application/msword" ||
+    file.type ===
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  ) {
+    return "document";
+  }
   return "other";
 }
 
@@ -147,6 +157,15 @@ export function DropZone({
     if (currentFile && (category === "image" || category === "video")) {
       url = URL.createObjectURL(currentFile);
       setPreviewUrl(url);
+      setFontPreview(null);
+    } else if (currentFile && category === "document") {
+      const ext = currentFile.name.split(".").pop()?.toLowerCase() ?? "";
+      if (ext === "pdf" || currentFile.type === "application/pdf") {
+        url = URL.createObjectURL(currentFile);
+        setPreviewUrl(url);
+      } else {
+        setPreviewUrl(null);
+      }
       setFontPreview(null);
     } else {
       setPreviewUrl(null);

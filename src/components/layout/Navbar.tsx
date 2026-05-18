@@ -10,6 +10,7 @@ import {
   Film,
   Music,
   Type,
+  FileText,
   CodeXml,
 } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -20,6 +21,7 @@ const NAV_ITEMS = [
   { href: "/convert/video", label: "Video", icon: Film },
   { href: "/convert/audio", label: "Audio", icon: Music },
   { href: "/convert/font", label: "Font", icon: Type },
+  { href: "/convert/document", label: "Document", icon: FileText },
   { href: "/convert/developer", label: "Developer", icon: CodeXml },
 ];
 
