@@ -110,7 +110,7 @@ export default function Home() {
             <Zap className="h-3 w-3" />
             Free. Fast. No sign-up.
           </div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground md:text-6xl">
+          <h1 className="text-5xl font-extrabold  tracking-tight text-foreground md:text-7xl">
             Convert anything.
             <br />
             <span className="text-primary">Instantly.</span>
