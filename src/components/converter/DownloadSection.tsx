@@ -112,6 +112,15 @@ export function DownloadSection({
       link.click();
     } catch (error) {
       console.error("Save to failed", error);
+      const errName = (error as any)?.name;
+      if (
+        errName === "AbortError" ||
+        errName === "NotAllowedError" ||
+        errName === "SecurityError"
+      ) {
+        return;
+      }
+
       alert(
         "Save to folder failed. Your browser may not support the file picker API. Use Download instead.",
       );
