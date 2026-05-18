@@ -5,7 +5,6 @@ import { ArrowRight, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DropZone } from "./DropZone";
 import { FormatSelector } from "./FormatSelector";
-import { ProgressBar } from "./ProgressBar";
 import { DownloadSection } from "./DownloadSection";
 import { useConversion } from "../../hooks/useConversion";
 import { validateFileSize, formatFileSize } from "../../utils/fileDetection";
@@ -13,6 +12,20 @@ import {
   getFileExtension,
   getAvailableOutputsForFile,
 } from "../../utils/formatOptions";
+
+function ProcessingBorder() {
+  return (
+    <>
+      <style>{`
+        @keyframes conic-spin { to { transform: rotate(360deg); } }
+        .proc-ring { position:absolute;inset:-2px;border-radius:9px;pointer-events:none;overflow:hidden;z-index:0; }
+        .proc-ring::before { content:'';position:absolute;inset:-120%;background:conic-gradient(from 0deg,transparent 0deg,#7c5cfc 50deg,#a78bfa 80deg,#38bdf8 130deg,transparent 180deg);animation:conic-spin 1.6s linear infinite; }
+        .proc-ring::after { content:'';position:absolute;inset:2px;border-radius:7px;background:hsl(var(--background)); }
+      `}</style>
+      <div className="proc-ring" />
+    </>
+  );
+}
 
 interface ConversionPanelProps {
   category: string;
@@ -137,13 +150,18 @@ export function ConversionPanel({
             )}
           </AnimatePresence>
 
-          {isConverting && job && (
-            <ProgressBar
-              progress={job.progress}
-              status={
-                job.status as "uploading" | "processing" | "done" | "error"
-              }
-            />
+          {/* Animated border "Converting…" state */}
+          {isConverting && (
+            <div className="relative">
+              <ProcessingBorder />
+              <Button
+                disabled
+                variant="ghost"
+                className="relative z-10 w-full cursor-not-allowed"
+              >
+                {job?.status === "uploading" ? "Uploading…" : "Converting…"}
+              </Button>
+            </div>
           )}
 
           {isError && job?.errorMessage && (

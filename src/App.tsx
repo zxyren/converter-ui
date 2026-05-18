@@ -1,16 +1,16 @@
-import { Switch, Route, Router as WouterRouter } from 'wouter';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider } from 'next-themes';
-import { Toaster } from '@/components/ui/sonner';
-import { Navbar } from './components/layout/Navbar';
-import { Footer } from './components/layout/Footer';
-import Home from './pages/Home';
-import ImageConverter from './pages/ImageConverter';
-import VideoConverter from './pages/VideoConverter';
-import AudioConverter from './pages/AudioConverter';
-import FontConverter from './pages/FontConverter';
-import DeveloperTools from './pages/DeveloperTools';
-import NotFound from './pages/not-found';
+import { Switch, Route, Router as WouterRouter } from "wouter";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "next-themes";
+import { Toaster } from "@/components/ui/sonner";
+import { Navbar } from "./components/layout/Navbar";
+import { Footer } from "./components/layout/Footer";
+import Home from "./pages/Home";
+import ImageConverter from "./pages/ImageConverter";
+import VideoConverter from "./pages/VideoConverter";
+import AudioConverter from "./pages/AudioConverter";
+import FontConverter from "./pages/FontConverter";
+import DeveloperTools from "./pages/DeveloperTools";
+import NotFound from "./pages/not-found";
 
 const queryClient = new QueryClient();
 
@@ -38,10 +38,14 @@ function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <QueryClientProvider client={queryClient}>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <Router />
         </WouterRouter>
-        <Toaster richColors position="top-right" />
+        <Toaster
+          richColors
+          position="top-center"
+          className="select-none cursor-grab"
+        />
       </QueryClientProvider>
     </ThemeProvider>
   );
