@@ -109,16 +109,16 @@ export default function DeveloperTools() {
           transition={{ duration: 0.35, delay: 0.1 }}
           className="w-full shrink-0 md:w-52"
         >
-          <p className="mb-2 px-1 text-xs font-black uppercase tracking-wider text-muted-foreground">
+          <p className="mb-2 px-1 font-black uppercase tracking-wider text-muted-foreground">
             Tools
           </p>
-          <nav className="flex flex-col gap-1">
+          <nav className="flex flex-col gap-2">
             {TOOLS.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => setActiveTool(id)}
                 data-testid={`button-tool-${id}`}
-                className={`flex items-center gap-2.5 cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-left transition-colors ${
+                className={`flex items-center gap-2 cursor-pointer rounded-lg px-3 py-2 font-medium text-left transition-colors ${
                   activeTool === id
                     ? "outline outline-primary/30 text-primary"
                     : "text-muted-foreground hover:bg-secondary hover:text-foreground"

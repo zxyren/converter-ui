@@ -77,7 +77,9 @@ export function DevToolPanel({
   const colorInputClass = useMemo(() => {
     if (toolId !== "color-converter") return "";
     if (!input.trim()) return "";
-    return colorPreview ? "ring-2 ring-emerald-400/40" : "ring-2 ring-rose-400/40";
+    return colorPreview
+      ? "ring-2 ring-emerald-400/40"
+      : "ring-2 ring-rose-400/40";
   }, [toolId, colorPreview, input]);
 
   // Ref to hold the debounce timer
