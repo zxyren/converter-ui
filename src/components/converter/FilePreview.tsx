@@ -69,7 +69,9 @@ function getDisplayFileName(fileName: string, maxLength = 28) {
 }
 
 function getAudioGradient(fileName: string): string {
-  const hash = fileName.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const hash = fileName
+    .split("")
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const gradients = [
     "from-purple-600 to-pink-600",
     "from-blue-600 to-cyan-600",
@@ -136,7 +138,9 @@ export function FilePreview({
                 className="h-full w-full rounded-lg bg-white"
               />
             ) : category === "audio" ? (
-              <div className={`h-full w-full bg-linear-to-br ${getAudioGradient(file.name)} flex items-center justify-center`}>
+              <div
+                className={`h-full w-full bg-linear-to-br ${getAudioGradient(file.name)} flex items-center justify-center`}
+              >
                 <Music className="h-7 w-7 text-white" />
               </div>
             ) : (
@@ -155,12 +159,13 @@ export function FilePreview({
               <span className="font-semibold ">Size:</span>{" "}
               <span className="font-mono">{formatFileSize(file.size)}</span>
             </p>
-            {duration !== null && (category === "video" || category === "audio") && (
-              <p className="text-sm text-muted-foreground">
-                <span className="font-semibold ">Duration:</span>{" "}
-                <span className="font-mono">{formatDuration(duration)}</span>
-              </p>
-            )}
+            {duration !== null &&
+              (category === "video" || category === "audio") && (
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-semibold ">Duration:</span>{" "}
+                  <span className="font-mono">{formatDuration(duration)}</span>
+                </p>
+              )}
           </div>
         </div>
       </div>

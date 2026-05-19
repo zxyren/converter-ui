@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { FileUp, X, FileText } from "lucide-react";
+import { X, FileText, Paperclip } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const TOOL_ACCEPTED_FILES: Record<string, string> = {
@@ -112,7 +112,7 @@ export function FileUploadButton({
           onClick={() => fileInputRef.current?.click()}
           data-testid="button-devtool-upload"
         >
-          <FileUp size={20} className="shrink-0" />
+          <Paperclip size={20} className="shrink-0" />
           Upload File
         </Button>
       )}
