@@ -17,11 +17,15 @@ const buttonVariants = cva(
           "border bg-secondary text-secondary-foreground border border-secondary-border ",
         ghost: "border border-transparent text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        white: "border border-white font-black bg-white text-black",
+        glass:
+          "border border-foreground/30 bg-white/10 font-black text-foreground backdrop-blur-sm",
       },
       size: {
         default: "min-h-9 px-4 py-2",
         sm: "min-h-8 rounded-md px-3 text-xs",
         lg: "min-h-10 rounded-md px-8",
+        xl: "min-h-12 rounded-full px-10",
         icon: "h-9 w-9",
       },
     },

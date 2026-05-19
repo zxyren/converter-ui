@@ -213,13 +213,17 @@ export function DevToolPanel({
             />
             {output && (
               <Button
-                variant="ghost"
+                variant="glass"
                 size="sm"
                 onClick={handleCopy}
                 data-testid="button-copy"
                 className="absolute right-2 top-5 h-6 gap-1 text-xs"
               >
-                {copied ? <Check size={14} /> : <Copy size={14} />}
+                {copied ? (
+                  <Check size={14} className="text-emerald-500" />
+                ) : (
+                  <Copy size={14} />
+                )}
                 <span className="hidden sm:inline">
                   {copied ? "Copied" : "Copy"}
                 </span>

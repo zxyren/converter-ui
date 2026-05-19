@@ -16,7 +16,11 @@ export async function convertFile(
   file: File,
   outputFormat: string,
   options?: Record<string, string>,
-): Promise<{ job_id: string; result_url?: string; result_size_bytes?: number }> {
+): Promise<{
+  job_id: string;
+  result_url?: string;
+  result_size_bytes?: number;
+}> {
   const route = CATEGORY_ROUTE_MAP[category];
   if (!route) {
     throw new Error(`Unsupported conversion category: ${category}`);

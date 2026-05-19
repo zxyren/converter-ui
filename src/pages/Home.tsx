@@ -12,6 +12,7 @@ import {
   UserX,
   ShieldCheck,
   Layers,
+  Rocket,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -106,8 +107,8 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero */}
       <section className="relative overflow-hidden py-24 md:py-32">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute left-1/2 top-0 h-150 w-200 -translate-x-1/2 -translate-y-1/4 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute inset-0 -z-10 bg-transparent">
+          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(125%_125%_at_50%_10%,rgba(255,255,255,0)_40%,rgba(102,51,238,1)_100%)]" />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -115,8 +116,9 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-3xl px-4 text-center md:px-6"
         >
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
-            <Zap className="h-3 w-3" />
+          {/* border border-white/30 bg-white/10 text-foreground backdrop-blur-sm */}
+          <div className="mb-5 inline-flex items-center gap-2 text-sm rounded-full border border-white/30 bg-white/10 text-foreground backdrop-blur-sm px-4 py-2">
+            <Rocket size={16} />
             Free. Fast. No sign-up.
           </div>
           <h1 className="text-5xl font-extrabold  tracking-tight text-foreground md:text-7xl">
@@ -130,23 +132,15 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button
-              asChild
-              size="lg"
+              size="xl"
+              variant="white"
               className="gap-2 px-8"
               data-testid="button-start-converting"
             >
-              <Link href="/convert/image">
-                Start converting
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              <Link href="/convert/image">Get Started</Link>
             </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              data-testid="button-view-tools"
-            >
-              <Link href="/convert/developer">Developer tools</Link>
+            <Button variant="glass" size="xl" data-testid="button-view-tools">
+              <Link href="/convert/developer">Developer Tools</Link>
             </Button>
           </div>
         </motion.div>
