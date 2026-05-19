@@ -132,6 +132,7 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button
+              asChild
               size="xl"
               variant="white"
               className="gap-2 px-8"
@@ -139,7 +140,12 @@ export default function Home() {
             >
               <Link href="/convert/image">Get Started</Link>
             </Button>
-            <Button variant="glass" size="xl" data-testid="button-view-tools">
+            <Button
+              asChild
+              variant="glass"
+              size="xl"
+              data-testid="button-view-tools"
+            >
               <Link href="/convert/developer">Developer Tools</Link>
             </Button>
           </div>
