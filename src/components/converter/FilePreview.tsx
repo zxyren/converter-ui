@@ -78,7 +78,7 @@ function getAudioGradient(fileName: string): string {
     "from-green-600 to-emerald-600",
     "from-orange-600 to-red-600",
     "from-indigo-600 to-purple-600",
-    "from-rose-600 to-pink-600",
+    "from-lime-600 to-green-600",
   ];
   return gradients[hash % gradients.length];
 }
