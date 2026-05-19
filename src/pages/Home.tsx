@@ -7,11 +7,11 @@ import {
   Music,
   Type,
   FileText,
-  Code,
+  CodeXml,
   Zap,
   UserX,
   ShieldCheck,
-  FileCheck2,
+  Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -58,7 +58,7 @@ const CATEGORIES = [
   },
   {
     href: "/convert/developer",
-    icon: Code,
+    icon: CodeXml,
     label: "Developer",
     description: "JSON, XML, YAML, Base64, Color, Markdown",
     color: "from-rose-500/20 to-pink-500/20",
@@ -79,7 +79,7 @@ const FEATURES = [
       "Your files are processed and immediately deleted. Zero accounts.",
   },
   {
-    icon: FileCheck2,
+    icon: Layers,
     title: "Any format",
     description:
       "Images, videos, audio, fonts, documents, and developer data — all in one place.",
@@ -125,8 +125,8 @@ export default function Home() {
             <span className="text-primary">Instantly.</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground md:text-xl">
-            A universal file converter for images, video, audio, fonts, documents, and
-            developer data. Drop a file. Pick a format. Done.
+            A universal file converter for images, video, audio, fonts,
+            documents, and developer data. Drop a file. Pick a format. Done.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button
