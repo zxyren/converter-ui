@@ -117,7 +117,7 @@ export default function Home() {
           className="mx-auto max-w-3xl px-4 text-center md:px-6"
         >
           {/* border border-white/30 bg-white/10 text-foreground backdrop-blur-sm */}
-          <div className="mb-5 inline-flex items-center gap-2 text-sm rounded-full border border-white/30 bg-white/10 text-foreground backdrop-blur-sm px-4 py-2">
+          <div className="mb-5 inline-flex items-center gap-2 text-sm rounded-full border border-foreground/20 bg-white/10 text-foreground backdrop-blur-sm px-4 py-2">
             <Rocket size={16} />
             Free. Fast. No sign-up.
           </div>
@@ -266,10 +266,11 @@ export default function Home() {
                 asChild
                 variant="outline"
                 data-testid={`button-cta-${label.toLowerCase()}`}
+                className="rounded-full"
               >
-                <Link href={href} className="gap-2">
-                  <Icon size={23} />
-                  {label}
+                <Link href={href} className="gap-2 flex items-center">
+                  <Icon size={20} />
+                  <span>{label}</span>
                 </Link>
               </Button>
             ))}
