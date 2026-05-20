@@ -12,6 +12,12 @@ const TOOLS = [
   { id: "xml-json", label: "XML to JSON", icon: FileJson, panel: "api" },
   { id: "yaml-json", label: "YAML to JSON", icon: FileText, panel: "api" },
   { id: "json-yaml", label: "JSON to YAML", icon: FileText, panel: "api" },
+  { id: "json-csv", label: "JSON to CSV", icon: FileJson, panel: "api" },
+  { id: "csv-json", label: "CSV to JSON", icon: FileJson, panel: "api" },
+  { id: "xml-yaml", label: "XML to YAML", icon: FileText, panel: "api" },
+  { id: "yaml-xml", label: "YAML to XML", icon: FileText, panel: "api" },
+  { id: "env-json", label: "ENV to JSON", icon: FileText, panel: "api" },
+  { id: "json-env", label: "JSON to ENV", icon: FileText, panel: "api" },
   { id: "base64-encode", label: "Text to Base64", icon: Hash, panel: "client" },
   { id: "base64-decode", label: "Base64 to Text", icon: Hash, panel: "client" },
   {
@@ -51,6 +57,37 @@ const TOOL_CONFIG: Record<
     inputLabel: "JSON",
     outputLabel: "YAML",
     inputPlaceholder: '{\n  "key": "value"\n}',
+  },
+  "json-csv": {
+    inputLabel: "JSON",
+    outputLabel: "CSV",
+    inputPlaceholder:
+      '[\n  {\n    "name": "Alice",\n    "age": 30\n  },\n  {\n    "name": "Bob",\n    "age": 28\n  }\n]',
+  },
+  "csv-json": {
+    inputLabel: "CSV",
+    outputLabel: "JSON",
+    inputPlaceholder: "name,age\nAlice,30\nBob,28",
+  },
+  "xml-yaml": {
+    inputLabel: "XML",
+    outputLabel: "YAML",
+    inputPlaceholder: "<root>\n  <name>Alice</name>\n  <age>30</age>\n</root>",
+  },
+  "yaml-xml": {
+    inputLabel: "YAML",
+    outputLabel: "XML",
+    inputPlaceholder: "name: Alice\nage: 30\n",
+  },
+  "env-json": {
+    inputLabel: "ENV",
+    outputLabel: "JSON",
+    inputPlaceholder: "FOO=bar\nBAR=42\nDEBUG=true",
+  },
+  "json-env": {
+    inputLabel: "JSON",
+    outputLabel: "ENV",
+    inputPlaceholder: '{\n  "FOO": "bar",\n  "BAR": 42,\n  "DEBUG": true\n}',
   },
   "base64-encode": {
     inputLabel: "Plain Text",
