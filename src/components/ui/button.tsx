@@ -12,12 +12,13 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary/20 text-foreground border border-primary/50",
         destructive: "bg-rose-500/10 shadow-sm border border-rose-500/50",
-        outline: " border border-primary/50 shadow-xs active:shadow-none ",
+        outline: " border border-foreground/50 shadow-xs active:shadow-none ",
         secondary:
           "border bg-secondary text-secondary-foreground border border-secondary-border ",
         ghost: "border border-transparent text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        white: "border border-white font-black bg-white text-black",
+        white:
+          "font-black bg-black text-white border border-white/30 dark:bg-white dark:text-black dark:border-black/30",
         glass:
           "border border-foreground/30 bg-white/10 font-black text-foreground backdrop-blur-sm",
       },
