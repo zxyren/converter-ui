@@ -209,7 +209,7 @@ export function DevToolPanel({
               rows={10}
               data-testid="textarea-output"
               placeholder="Output will appear here..."
-              className="font-mono text-sm resize-none bg-secondary/50 mt-3 w-full"
+              className="font-mono text-sm resize-none bg-secondary/50 mt-3 w-full focus-visible:ring-0 focus-visible:outline-none"
             />
             {output && (
               <Button

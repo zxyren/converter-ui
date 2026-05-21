@@ -75,11 +75,7 @@ export function Navbar() {
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="h-8 w-8"
           >
-            {theme === "dark" ? (
-              <Sun className="h-4 w-4" />
-            ) : (
-              <Moon className="h-4 w-4" />
-            )}
+            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </Button>
           <Button
             variant="ghost"
@@ -88,11 +84,7 @@ export function Navbar() {
             data-testid="button-mobile-menu"
             onClick={() => setMobileOpen((o) => !o)}
           >
-            {mobileOpen ? (
-              <X className="h-4 w-4" />
-            ) : (
-              <Menu className="h-4 w-4" />
-            )}
+            {mobileOpen ? <X size={16} /> : <Menu size={16} />}
           </Button>
         </div>
       </div>
@@ -121,7 +113,7 @@ export function Navbar() {
                         : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                     }`}
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon size={16} />
                     {label}
                   </Link>
                 );
