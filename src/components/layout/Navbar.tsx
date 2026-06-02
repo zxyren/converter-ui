@@ -32,7 +32,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 md:px-6">
+      <div className="mx-auto flex py-5 max-w-7xl items-center justify-between px-4 md:px-6">
         <Link
           href="/"
           className="flex w-fit items-center gap-3 text-foreground transition-opacity hover:opacity-90"
@@ -59,7 +59,7 @@ export function Navbar() {
                   }`}
               >
                 <Icon size={16} className={active ? "fill" : "text-muted-foreground"} />
-                {label}
+                <span className="mt-1">{label}</span>
               </Link>
             );
           })}

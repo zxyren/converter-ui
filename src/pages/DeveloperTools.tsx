@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CodeXml, FileJson, FileText, Hash, PaintBucket } from "lucide-react";
+import { FileJson, FileText, Hash, PaintBucket } from "lucide-react";
 import {
   DevToolPanel,
   InstantDevToolPanel,
   MarkdownPanel,
 } from "../components/developer/DevToolPanel";
+import { DevIcon } from "@/components/icons/previewIcons";
 
 const TOOLS = [
   { id: "json-xml", label: "JSON to XML", icon: FileJson, panel: "api" },
@@ -125,9 +126,7 @@ export default function DeveloperTools() {
         className="mb-8"
       >
         <div className="mb-4 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-rose-500/15 text-rose-600 dark:text-rose-400">
-            <CodeXml size={23} />
-          </div>
+          <DevIcon />
           <h1 className="text-2xl font-bold text-foreground">
             Developer Tools
           </h1>
@@ -155,11 +154,10 @@ export default function DeveloperTools() {
                 key={id}
                 onClick={() => setActiveTool(id)}
                 data-testid={`button-tool-${id}`}
-                className={`flex items-center gap-2 cursor-pointer rounded-lg px-3 py-2 font-medium text-left transition-colors ${
-                  activeTool === id
-                    ? "outline outline-primary/30 text-primary"
-                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
-                }`}
+                className={`flex items-center gap-2 cursor-pointer rounded-lg px-3 py-2 font-medium text-left transition-colors ${activeTool === id
+                  ? "outline outline-primary/30 text-primary"
+                  : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  }`}
               >
                 <Icon size={20} />
                 {label}

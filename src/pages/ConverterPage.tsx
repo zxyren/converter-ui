@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
 import { ConversionPanel } from "../components/converter/ConversionPanel";
 import { CATEGORY_FORMAT_MAP } from "../utils/formatOptions";
+
+interface ConverterIconProps {
+  size?: number;
+  strokeWidth?: number;
+  className?: string;
+}
 
 interface ConverterPageProps {
   title: string;
   description: string;
-  icon: LucideIcon;
-  iconColor: string;
+  icon: React.ComponentType<ConverterIconProps>;
+  // iconColor: string;
   category: string;
   extraFields?: React.ReactNode;
   extraOptions?: Record<string, string>;
@@ -17,7 +22,7 @@ export function ConverterPage({
   title,
   description,
   icon: Icon,
-  iconColor,
+  // iconColor,
   category,
   extraFields,
   extraOptions,
@@ -35,7 +40,7 @@ export function ConverterPage({
       >
         <div className="mb-4 flex items-center gap-3">
           <div
-            className={`flex h-10 w-10 items-center justify-center rounded-md ${iconColor}`}
+            className={`flex h-10 w-10 items-center justify-center rounded-md`}
           >
             <Icon size={23} />
           </div>

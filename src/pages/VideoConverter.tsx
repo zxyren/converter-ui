@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Film } from "lucide-react";
 import { ConverterPage } from "./ConverterPage";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { VideoIcon } from "@/components/icons/previewIcons";
 
 export default function VideoConverter() {
   const [startTime, setStartTime] = useState("");
@@ -11,9 +11,9 @@ export default function VideoConverter() {
   const extraOptions =
     startTime || endTime
       ? {
-          ...(startTime && { start_time: startTime }),
-          ...(endTime && { end_time: endTime }),
-        }
+        ...(startTime && { start_time: startTime }),
+        ...(endTime && { end_time: endTime }),
+      }
       : undefined;
 
   const extraFields = (
@@ -62,8 +62,7 @@ export default function VideoConverter() {
     <ConverterPage
       title="Video Converter"
       description="Convert video files, extract audio, create GIFs, and more. Optionally clip a specific time range and keep the original format."
-      icon={Film}
-      iconColor="bg-violet-500/15 text-violet-600 dark:text-violet-400"
+      icon={VideoIcon}
       category="video"
       extraFields={extraFields}
       extraOptions={extraOptions}
