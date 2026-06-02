@@ -97,10 +97,10 @@ export function FilePreview({
   const displayName = getDisplayFileName(file.name);
 
   return (
-    <div className="relative w-full max-w-full rounded-xl border border-border p-4 shadow-sm sm:p-5">
+    <div className="relative w-full max-w-full rounded-xl">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-primary/10 sm:h-24 sm:w-24">
+          <div className="flex h-30 w-30 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-primary/10 sm:h-35 sm:w-35">
             {fontPreview ? (
               <>
                 <style>{`@font-face { font-family: '${fontPreview.family}'; src: url('${fontPreview.url}') format('${fontPreview.format}'); font-weight: 400; font-style: normal; }`}</style>
@@ -176,7 +176,7 @@ export function FilePreview({
           size="icon"
           onClick={onClear}
           data-testid="button-clear-file"
-          className="absolute right-2 top-2 h-8 w-8 sm:right-2 sm:top-2"
+          className="absolute group right-2 top-2 h-8 w-8 sm:right-2 sm:top-2"
         >
           <X
             size={16}
