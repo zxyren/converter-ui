@@ -99,28 +99,12 @@ export function getAvailableOutputsForFile(
 ): string[] {
   const ext = getFileExtension(file);
   // Try exact extension match first
-  let direct = getAvailableOutputsForCategory(ext, category);
-  if (
-    category === "video" &&
-    ext &&
-    direct.length > 0 &&
-    !direct.includes(ext)
-  ) {
-    direct = [...direct, ext];
-  }
+  const direct = getAvailableOutputsForCategory(ext, category);
   if (direct.length > 0) return direct;
   // Fallback to MIME-based extension
   const mimeExt = MIME_TO_EXT[file.type];
   if (mimeExt && mimeExt !== ext) {
-    let fallback = getAvailableOutputsForCategory(mimeExt, category);
-    if (
-      category === "video" &&
-      mimeExt &&
-      fallback.length > 0 &&
-      !fallback.includes(mimeExt)
-    ) {
-      fallback = [...fallback, mimeExt];
-    }
+    const fallback = getAvailableOutputsForCategory(mimeExt, category);
     if (fallback.length > 0) return fallback;
   }
   return [];
