@@ -199,11 +199,14 @@ export function DownloadSection({
             </div>
           )}
           {previewCategory === "document" && (
-            <iframe
-              src={resultUrl}
-              title={`Converted ${outputFormat}`}
-              className="mx-auto h-72 w-full rounded-xl border border-border bg-white"
-            />
+            <div className="relative mx-auto h-72 w-full overflow-hidden rounded-xl border border-border bg-white">
+              <iframe
+                src={`${resultUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                title={`Converted ${outputFormat}`}
+                className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 max-w-none border-0 pointer-events-none"
+                scrolling="no"
+              />
+            </div>
           )}
         </div>
       )}
