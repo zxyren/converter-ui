@@ -64,14 +64,14 @@ export function ConverterPage({
         transition={{ duration: 0.4, delay: 0.25 }}
         className="mt-6 rounded-xl border border-border bg-card/50 p-4"
       >
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Supported input formats
+        <p className="text-sm mb-3 font-semibold text-muted-foreground">
+          Select output format
         </p>
         <div className="flex flex-wrap gap-2">
           {supportedInputs.map((ext) => (
             <span
               key={ext}
-              className="rounded-sm font-mono border border-secondary bg-secondary/10 px-2.5 py-1 text-xs font-medium text-foreground uppercase"
+              className="rounded-sm font-mono bg-secondary px-3 py-2 text-xs font-medium text-foreground uppercase"
             >
               {ext}
             </span>

@@ -97,7 +97,7 @@ export function FilePreview({
   const displayName = getDisplayFileName(file.name);
 
   return (
-    <div className="relative w-full max-w-full rounded-xl border border-border bg-card p-4 shadow-sm sm:p-5">
+    <div className="relative w-full max-w-full rounded-xl border border-border p-4 shadow-sm sm:p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
           <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-primary/10 sm:h-24 sm:w-24">
@@ -141,10 +141,10 @@ export function FilePreview({
               <div
                 className={`h-full w-full bg-linear-to-br ${getAudioGradient(file.name)} flex items-center justify-center`}
               >
-                <Music className="h-7 w-7 text-white" />
+                <Music size={28} className="text-white" />
               </div>
             ) : (
-              <IconComponent className="h-7 w-7 text-primary" />
+              <IconComponent size={28} className="text-primary" />
             )}
           </div>
           <div className="min-w-0 flex-1">
