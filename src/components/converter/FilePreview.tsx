@@ -1,6 +1,7 @@
 import { FileText, Image, Video, Music, Type, X } from "lucide-react";
 import { formatFileSize } from "../../utils/fileDetection";
 import { Button } from "@/components/ui/button";
+import { DOCIcon, DOCXIcon, PDFIcon } from "../icons/previewIcons";
 
 interface FontPreview {
   family: string;
@@ -33,6 +34,14 @@ function getIcon(category: string) {
     default:
       return FileText;
   }
+}
+
+function getDocumentIcon(fileName: string) {
+  const ext = fileName.split(".").pop()?.toLowerCase() ?? "";
+  if (ext === "pdf") return PDFIcon;
+  if (ext === "docx") return DOCXIcon;
+  if (ext === "doc") return DOCIcon;
+  return FileText;
 }
 
 function formatDuration(seconds: number) {
@@ -142,6 +151,13 @@ export function FilePreview({
                 className={`h-full w-full bg-linear-to-br ${getAudioGradient(file.name)} flex items-center justify-center`}
               >
                 <Music size={28} className="text-white" />
+              </div>
+            ) : category === "document" ? (
+              <div className="flex items-center justify-center">
+                {(() => {
+                  const DocumentIcon = getDocumentIcon(file.name);
+                  return <DocumentIcon size={32} className="text-primary" />;
+                })()}
               </div>
             ) : (
               <IconComponent size={28} className="text-primary" />
