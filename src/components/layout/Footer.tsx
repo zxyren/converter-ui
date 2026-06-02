@@ -36,7 +36,7 @@ export function Footer() {
                 />
               </div>
               <span className="text-base font-semibold tracking-tight">
-                Docvert
+                FileFlip
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
@@ -94,7 +94,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex flex-col gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {new Date().getFullYear()} Docvert. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} FileFlip. All rights reserved.</p>
           <p className="max-w-xl sm:text-right">
             Built for teams that care about clarity, speed, and security.
           </p>

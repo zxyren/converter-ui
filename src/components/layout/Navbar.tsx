@@ -41,7 +41,7 @@ export function Navbar() {
             <img src="/logo.png" alt="" className="size-10 object-contain" />
           </div>
           <span className="text-base font-semibold tracking-tight">
-            Docvert
+            FileFlip
           </span>
         </Link>
 
@@ -53,11 +53,10 @@ export function Navbar() {
                 key={href}
                 href={href}
                 data-testid={`nav-link-${label.toLowerCase()}`}
-                className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-                  active
+                className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${active
                     ? "bg-primary/20 outline outline-primary/50 outline-offset-1 text-primary"
                     : "text-muted-foreground hover:bg-secondary hover:text-foreground"
-                }`}
+                  }`}
               >
                 <Icon size={16} />
                 {label}
@@ -107,11 +106,10 @@ export function Navbar() {
                     href={href}
                     data-testid={`mobile-nav-${label.toLowerCase()}`}
                     onClick={() => setMobileOpen(false)}
-                    className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                      active
+                    className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors ${active
                         ? "bg-primary/10 text-primary"
                         : "text-muted-foreground hover:bg-secondary hover:text-foreground"
-                    }`}
+                      }`}
                   >
                     <Icon size={16} />
                     {label}
