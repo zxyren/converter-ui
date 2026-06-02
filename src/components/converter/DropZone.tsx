@@ -53,7 +53,7 @@ function getFileCategory(
     file.type === "application/pdf" ||
     file.type === "application/msword" ||
     file.type ===
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
   ) {
     return "document";
   }
@@ -226,11 +226,10 @@ export function DropZone({
         onDragLeave={onDragLeave}
         onClick={() => !disabled && inputRef.current?.click()}
         data-testid="dropzone"
-        className={`relative w-full flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed px-6 py-12 text-center transition-colors ${
-          isDragging
+        className={`relative w-full flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed px-6 py-12 text-center transition-colors ${isDragging
             ? "border-primary bg-primary/5"
             : "border-border bg-card hover:border-primary/50 hover:bg-primary/5"
-        } ${disabled ? "pointer-events-none opacity-50" : ""}`}
+          } ${disabled ? "pointer-events-none opacity-50" : ""}`}
       >
         <motion.div
           animate={{ y: isDragging ? -4 : 0 }}
