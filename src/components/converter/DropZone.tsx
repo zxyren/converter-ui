@@ -154,7 +154,9 @@ export function DropZone({
   useEffect(() => {
     let url: string | null = null;
 
-    if (currentFile && (category === "image" || category === "video")) {
+    const isPdf = currentFile?.name.toLowerCase().endsWith('.pdf') || currentFile?.type === 'application/pdf';
+
+    if (currentFile && (category === "image" || category === "video" || (category === "document" && isPdf))) {
       url = URL.createObjectURL(currentFile);
       setPreviewUrl(url);
       setFontPreview(null);

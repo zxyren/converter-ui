@@ -1,7 +1,7 @@
 import { FileText, Image, Video, Music, Type, X } from "lucide-react";
 import { formatFileSize } from "../../utils/fileDetection";
 import { Button } from "@/components/ui/button";
-import { DOCIcon, DOCXIcon, PDFIcon } from "../icons/previewIcons";
+import { DOCIcon, DOCXIcon } from "../icons/previewIcons";
 
 interface FontPreview {
   family: string;
@@ -38,7 +38,6 @@ function getIcon(category: string) {
 
 function getDocumentIcon(fileName: string) {
   const ext = fileName.split(".").pop()?.toLowerCase() ?? "";
-  if (ext === "pdf") return PDFIcon;
   if (ext === "docx") return DOCXIcon;
   if (ext === "doc") return DOCIcon;
   return FileText;
@@ -139,11 +138,14 @@ export function FilePreview({
                 }
               />
             ) : category === "document" && previewUrl ? (
-              <iframe
-                src={previewUrl}
-                title={file.name}
-                className="h-full w-full rounded-lg bg-white"
-              />
+              <div className="relative h-full w-full overflow-hidden bg-white">
+                <iframe
+                  src={`${previewUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                  title={file.name}
+                  className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 max-w-none border-0 pointer-events-none"
+                  scrolling="no"
+                />
+              </div>
             ) : category === "audio" ? (
               <div
                 className={`h-full w-full bg-linear-to-br ${getAudioGradient(file.name)} flex items-center justify-center`}
