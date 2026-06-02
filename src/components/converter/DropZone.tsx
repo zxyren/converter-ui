@@ -159,13 +159,7 @@ export function DropZone({
       setPreviewUrl(url);
       setFontPreview(null);
     } else if (currentFile && category === "document") {
-      const ext = currentFile.name.split(".").pop()?.toLowerCase() ?? "";
-      if (ext === "pdf" || currentFile.type === "application/pdf") {
-        url = URL.createObjectURL(currentFile);
-        setPreviewUrl(url);
-      } else {
-        setPreviewUrl(null);
-      }
+      setPreviewUrl(null);
       setFontPreview(null);
     } else {
       setPreviewUrl(null);

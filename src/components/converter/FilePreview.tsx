@@ -120,26 +120,24 @@ export function FilePreview({
                   {previewText}
                 </span>
               </>
-            ) : previewUrl ? (
-              category === "image" ? (
-                <img
-                  src={previewUrl}
-                  alt={file.name}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <video
-                  src={previewUrl}
-                  className="h-full w-full object-cover"
-                  muted
-                  loop
-                  playsInline
-                  autoPlay
-                  onLoadedMetadata={(e) =>
-                    onVideoLoadedMetadata?.(e.currentTarget.duration)
-                  }
-                />
-              )
+            ) : category === "image" && previewUrl ? (
+              <img
+                src={previewUrl}
+                alt={file.name}
+                className="h-full w-full object-cover"
+              />
+            ) : category === "video" && previewUrl ? (
+              <video
+                src={previewUrl}
+                className="h-full w-full object-cover"
+                muted
+                loop
+                playsInline
+                autoPlay
+                onLoadedMetadata={(e) =>
+                  onVideoLoadedMetadata?.(e.currentTarget.duration)
+                }
+              />
             ) : category === "document" && previewUrl ? (
               <iframe
                 src={previewUrl}
