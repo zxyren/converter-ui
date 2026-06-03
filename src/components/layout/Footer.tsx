@@ -49,10 +49,10 @@ export function Footer() {
                     className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     <Icon
-                      size={16}
+                      size={20}
                       className="opacity-70 transition-opacity group-hover:opacity-100"
                     />
-                    {label}
+                    <span className="mt-1">{label}</span>
                   </Link>
                 </li>
               ))}
@@ -68,8 +68,8 @@ export function Footer() {
                   href="/"
                   className="transition-colors flex items-center gap-2 hover:text-foreground"
                 >
-                  <IconHome size={16} />
-                  Home
+                  <IconHome size={20} />
+                  <span className="mt-1">Home</span>
                 </Link>
               </li>
               <li>
@@ -85,9 +85,9 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} FileFlip. All rights reserved.</p>
-          <p className="max-w-xl sm:text-right">
+          <p className="max-w-xl">
             Built for teams that care about clarity, speed, and security.
           </p>
         </div>
