@@ -175,7 +175,7 @@ export default function DeveloperTools() {
           className="flex-1 rounded-2xl border border-border bg-card p-6 shadow-sm"
         >
           <div className="mb-5 flex items-center gap-2">
-            <active.icon size={20} className="text-primary" />
+            <active.icon size={23} className="text-primary" />
             <h2 className="font-semibold text-foreground">{active.label}</h2>
           </div>
 

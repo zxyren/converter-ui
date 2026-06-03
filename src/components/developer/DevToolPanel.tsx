@@ -141,6 +141,18 @@ export function DevToolPanel({
     setError(null);
   };
 
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      if (!text) return;
+      setInput(text);
+      if (uploadedFile) setUploadedFile(null);
+      setError(null);
+    } catch {
+      setError("Unable to paste from clipboard.");
+    }
+  };
+
   const handleCopy = async () => {
     if (!output) return;
     await navigator.clipboard.writeText(output);
@@ -166,16 +178,25 @@ export function DevToolPanel({
               placeholder={inputPlaceholder}
               rows={10}
               data-testid="textarea-input"
-              className={`font-mono text-sm resize-none w-full ${colorInputClass}`}
+              className={`font-mono text-sm resize-none w-full ${colorInputClass} ${toolId === "color-converter" ? "pl-9" : ""}`}
             />
             {toolId === "color-converter" && (
-              <div className="absolute right-3 top-3 flex items-center">
+              <div className="absolute left-1.5 top-1.5 flex items-center">
                 <span
                   className="inline-block h-6 w-6 rounded border border-border"
                   style={{ backgroundColor: colorPreview ?? "transparent" }}
                 />
               </div>
             )}
+            <Button
+              type="button"
+              variant="glass"
+              size="sm"
+              onClick={handlePaste}
+              className="absolute right-2 top-2 text-xs"
+            >
+              Paste
+            </Button>
           </div>
         </div>
 
