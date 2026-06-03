@@ -1,5 +1,5 @@
+import { IconBrandYoutube, IconFileDescription, IconFileTypography, IconMusic, IconPackage, IconPhoto } from "@tabler/icons-react";
 import { motion } from "framer-motion";
-import { FileImage, FileSpreadsheet, FileType2, Film, Music, Package } from "lucide-react";
 
 interface FormatSelectorProps {
   formats: string[];
@@ -54,21 +54,21 @@ const FORMAT_DESCRIPTIONS: Record<string, string> = {
 function getFormatIcon(format: string) {
   const cat = format.toLowerCase();
   if (["jpg", "jpeg", "png", "webp", "gif", "bmp", "avif", "tiff", "tif", "ico", "heic"].includes(cat)) {
-    return FileImage;
+    return IconPhoto;
   }
   if (["mp4", "mov", "mkv", "webm", "avi", "m4v"].includes(cat)) {
-    return Film;
+    return IconBrandYoutube;
   }
   if (["mp3", "wav", "aac", "flac", "ogg", "opus", "m4a"].includes(cat)) {
-    return Music;
+    return IconMusic;
   }
   if (["ttf", "otf", "woff", "woff2"].includes(cat)) {
-    return FileType2;
+    return IconFileTypography;
   }
   if (["pdf", "docx", "doc"].includes(cat)) {
-    return FileSpreadsheet;
+    return IconFileDescription;
   }
-  return Package;
+  return IconPackage;
 }
 
 export function FormatSelector({

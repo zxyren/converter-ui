@@ -1,7 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DropZone } from "./DropZone";
 import { FormatSelector } from "./FormatSelector";
@@ -12,6 +11,7 @@ import {
   getFileExtension,
   getAvailableOutputsForFile,
 } from "../../utils/formatOptions";
+import { IconAlertTriangle, IconArrowRight } from "@tabler/icons-react";
 
 function ProcessingBorder() {
   return (
@@ -145,7 +145,7 @@ export function ConversionPanel({
                 className="flex items-center gap-2 rounded-lg border border-yellow-500/50 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-500"
                 data-testid="text-unsupported-format"
               >
-                <AlertCircle size={20} />
+                <IconAlertTriangle size={20} />
                 This file format is not supported. Please upload a different
                 file.
               </motion.div>
@@ -171,7 +171,7 @@ export function ConversionPanel({
               className="flex items-center gap-2 rounded-lg border border-yellow-500/50 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-500"
               data-testid="text-conversion-error"
             >
-              <AlertCircle size={20} />
+              <IconAlertTriangle size={20} />
               {job.errorMessage}
             </div>
           )}
@@ -186,7 +186,7 @@ export function ConversionPanel({
               {isKeepOriginal
                 ? `Trim to ${outputFormat?.toUpperCase()}`
                 : `${outputFormat?.toUpperCase()}`}
-              <ArrowRight size={20} />
+              <IconArrowRight size={20} />
             </Button>
           )}
 

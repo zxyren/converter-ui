@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import { X, FileText, Paperclip } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { IconFileText, IconPaperclip, IconX } from "@tabler/icons-react";
 
 const TOOL_ACCEPTED_FILES: Record<string, string> = {
   "json-xml": ".json",
@@ -66,7 +66,7 @@ export function FileUploadButton({
     try {
       const content = await readFile(file);
       onFileLoaded({ name: file.name, size: file.size, content });
-    } catch {}
+    } catch { }
     e.target.value = "";
   };
 
@@ -90,7 +90,7 @@ export function FileUploadButton({
               onClick={() => fileInputRef.current?.click()}
               data-testid="button-devtool-upload"
             >
-              <FileText size={20} className="text-primary" />
+              <IconFileText size={20} className="text-primary" />
               <span className="truncate">{uploadedFile.name}</span>
             </Button>
             <Button
@@ -101,7 +101,7 @@ export function FileUploadButton({
               data-testid="button-remove-file"
               className="group"
             >
-              <X
+              <IconX
                 size={16}
                 className="group-hover:rotate-90 duration-300 transition-all"
               />
@@ -118,7 +118,7 @@ export function FileUploadButton({
           onClick={() => fileInputRef.current?.click()}
           data-testid="button-devtool-upload"
         >
-          <Paperclip size={20} className="shrink-0" />
+          <IconPaperclip size={20} className="shrink-0" />
           Upload File
         </Button>
       )}

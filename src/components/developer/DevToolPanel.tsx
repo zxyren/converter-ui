@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { Copy, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { runDeveloperTool } from "../../services/api";
 import { FileUploadButton, UploadedFile } from "./FileUploadButton";
+import { IconCheck, IconCopy, IconLoader2 } from "@tabler/icons-react";
 
-// ── Client-side converters ───────────────────────────────────────────────────
 function clientConvert(toolId: string, input: string): string | null {
   try {
     switch (toolId) {
@@ -26,7 +25,7 @@ function clientConvert(toolId: string, input: string): string | null {
             Math.max(r, g, b) === 0
               ? 0
               : ((Math.max(r, g, b) - Math.min(r, g, b)) / Math.max(r, g, b)) *
-                  100,
+              100,
           )}%, ${Math.round(((Math.max(r, g, b) + Math.min(r, g, b)) / 2 / 255) * 100)}%)`;
         }
         return null;
@@ -39,7 +38,6 @@ function clientConvert(toolId: string, input: string): string | null {
   }
 }
 
-// ── Types ────────────────────────────────────────────────────────────────────
 interface DevToolPanelProps {
   toolId: string;
   inputLabel?: string;
@@ -48,10 +46,8 @@ interface DevToolPanelProps {
   isClientSide?: boolean;
 }
 
-// Debounce delay for typed input (ms). File uploads convert instantly.
 const DEBOUNCE_MS = 500;
 
-// ── DevToolPanel ─────────────────────────────────────────────────────────────
 export function DevToolPanel({
   toolId,
   inputLabel = "Input",
@@ -82,10 +78,8 @@ export function DevToolPanel({
       : "ring-2 ring-rose-400/40";
   }, [toolId, colorPreview, input]);
 
-  // Ref to hold the debounce timer
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // ── Core convert logic ─────────────────────────────────────────────────────
   const convert = useCallback(
     async (value: string) => {
       if (!value.trim()) {
@@ -121,7 +115,6 @@ export function DevToolPanel({
     [toolId, isClientSide],
   );
 
-  // ── Auto-convert with debounce when user types ─────────────────────────────
   useEffect(() => {
     if (debounceTimer.current) clearTimeout(debounceTimer.current);
     debounceTimer.current = setTimeout(() => {
@@ -133,12 +126,10 @@ export function DevToolPanel({
     };
   }, [input, convert]);
 
-  // ── File upload: convert immediately, no debounce ──────────────────────────
   const handleFileLoaded = (file: UploadedFile) => {
     setUploadedFile(file);
     setInput(file.content);
     setError(null);
-    // Cancel any pending debounce and run immediately
     if (debounceTimer.current) clearTimeout(debounceTimer.current);
     convert(file.content);
   };
@@ -194,9 +185,8 @@ export function DevToolPanel({
             <label className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
               {outputLabel}
             </label>
-            {/* Loading spinner sits next to the label while converting */}
             {loading && (
-              <Loader2
+              <IconLoader2
                 size={14}
                 className="animate-spin text-muted-foreground"
               />
@@ -220,9 +210,9 @@ export function DevToolPanel({
                 className="absolute right-2 top-5 h-6 gap-1 text-xs"
               >
                 {copied ? (
-                  <Check size={14} className="text-emerald-500" />
+                  <IconCheck size={14} className="text-emerald-500" />
                 ) : (
-                  <Copy size={14} />
+                  <IconCopy size={14} />
                 )}
                 <span className="hidden sm:inline">
                   {copied ? "Copied" : "Copy"}

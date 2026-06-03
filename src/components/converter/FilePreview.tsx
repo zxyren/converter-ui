@@ -1,7 +1,7 @@
-import { FileText, Image, Video, Music, Type, X } from "lucide-react";
 import { formatFileSize } from "../../utils/fileDetection";
 import { Button } from "@/components/ui/button";
 import { DOCIcon, DOCXIcon } from "../icons/previewIcons";
+import { IconPhoto, IconBrandYoutube, IconMusic, IconFileTypography, IconFileDescription, IconX } from "@tabler/icons-react";
 
 interface FontPreview {
   family: string;
@@ -22,17 +22,17 @@ interface FilePreviewProps {
 function getIcon(category: string) {
   switch (category) {
     case "image":
-      return Image;
+      return IconPhoto;
     case "video":
-      return Video;
+      return IconBrandYoutube;
     case "audio":
-      return Music;
+      return IconMusic;
     case "font":
-      return Type;
+      return IconFileTypography;
     case "document":
-      return FileText;
+      return IconFileDescription;
     default:
-      return FileText;
+      return IconFileDescription;
   }
 }
 
@@ -40,7 +40,7 @@ function getDocumentIcon(fileName: string) {
   const ext = fileName.split(".").pop()?.toLowerCase() ?? "";
   if (ext === "docx") return DOCXIcon;
   if (ext === "doc") return DOCIcon;
-  return FileText;
+  return IconFileDescription;
 }
 
 function formatDuration(seconds: number) {
@@ -150,7 +150,7 @@ export function FilePreview({
               <div
                 className={`h-full w-full bg-linear-to-br ${getAudioGradient(file.name)} flex items-center justify-center`}
               >
-                <Music size={28} className="text-white" />
+                <IconMusic size={28} className="text-white" />
               </div>
             ) : category === "document" ? (
               <div className="flex items-center justify-center">
@@ -194,7 +194,7 @@ export function FilePreview({
           data-testid="button-clear-file"
           className="absolute group right-2 top-2 h-8 w-8 sm:right-2 sm:top-2"
         >
-          <X
+          <IconX
             size={16}
             className="group-hover:rotate-90 duration-300 transition-all"
           />

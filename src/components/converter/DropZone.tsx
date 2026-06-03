@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Paperclip } from "lucide-react";
 import { validateFileSize } from "../../utils/fileDetection";
 import { FilePreview } from "./FilePreview";
+import { IconPaperclip } from "@tabler/icons-react";
 
 const IMAGE_EXTENSIONS = new Set([
   "jpg",
@@ -223,8 +223,8 @@ export function DropZone({
         onClick={() => !disabled && inputRef.current?.click()}
         data-testid="dropzone"
         className={`relative w-full flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed px-6 py-12 text-center transition-colors ${isDragging
-            ? "border-primary bg-primary/5"
-            : "border-border bg-card hover:border-primary/50 hover:bg-primary/5"
+          ? "border-primary bg-primary/5"
+          : "border-border bg-card hover:border-primary/50 hover:bg-primary/5"
           } ${disabled ? "pointer-events-none opacity-50" : ""}`}
       >
         <motion.div
@@ -232,7 +232,7 @@ export function DropZone({
           transition={{ duration: 0.2 }}
           className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10"
         >
-          <Paperclip size={23} className="text-primary" />
+          <IconPaperclip size={23} className="text-primary" />
         </motion.div>
         <div>
           <p className="text-sm font-semibold text-foreground">

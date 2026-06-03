@@ -1,36 +1,36 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FileJson, FileText, Hash, PaintBucket } from "lucide-react";
 import {
   DevToolPanel,
   InstantDevToolPanel,
   MarkdownPanel,
 } from "../components/developer/DevToolPanel";
 import { DevIcon } from "@/components/icons/previewIcons";
+import { IconColorFilter, IconFileText, IconFileTypeCsv, IconFileTypeHtml, IconFileTypeXml, IconHash, IconJson } from "@tabler/icons-react";
 
 const TOOLS = [
-  { id: "json-xml", label: "JSON to XML", icon: FileJson, panel: "api" },
-  { id: "xml-json", label: "XML to JSON", icon: FileJson, panel: "api" },
-  { id: "yaml-json", label: "YAML to JSON", icon: FileText, panel: "api" },
-  { id: "json-yaml", label: "JSON to YAML", icon: FileText, panel: "api" },
-  { id: "json-csv", label: "JSON to CSV", icon: FileJson, panel: "api" },
-  { id: "csv-json", label: "CSV to JSON", icon: FileJson, panel: "api" },
-  { id: "xml-yaml", label: "XML to YAML", icon: FileText, panel: "api" },
-  { id: "yaml-xml", label: "YAML to XML", icon: FileText, panel: "api" },
-  { id: "env-json", label: "ENV to JSON", icon: FileText, panel: "api" },
-  { id: "json-env", label: "JSON to ENV", icon: FileText, panel: "api" },
-  { id: "base64-encode", label: "Text to Base64", icon: Hash, panel: "client" },
-  { id: "base64-decode", label: "Base64 to Text", icon: Hash, panel: "client" },
+  { id: "json-xml", label: "JSON to XML", icon: IconFileTypeXml, panel: "api" },
+  { id: "xml-json", label: "XML to JSON", icon: IconJson, panel: "api" },
+  { id: "yaml-json", label: "YAML to JSON", icon: IconJson, panel: "api" },
+  { id: "json-yaml", label: "JSON to YAML", icon: IconFileText, panel: "api" },
+  { id: "json-csv", label: "JSON to CSV", icon: IconFileTypeCsv, panel: "api" },
+  { id: "csv-json", label: "CSV to JSON", icon: IconJson, panel: "api" },
+  { id: "xml-yaml", label: "XML to YAML", icon: IconFileText, panel: "api" },
+  { id: "yaml-xml", label: "YAML to XML", icon: IconFileTypeXml, panel: "api" },
+  { id: "env-json", label: "ENV to JSON", icon: IconJson, panel: "api" },
+  { id: "json-env", label: "JSON to ENV", icon: IconFileText, panel: "api" },
+  { id: "base64-encode", label: "Text to Base64", icon: IconHash, panel: "client" },
+  { id: "base64-decode", label: "Base64 to Text", icon: IconHash, panel: "client" },
   {
     id: "md-html",
     label: "Markdown to HTML",
-    icon: FileText,
+    icon: IconFileTypeHtml,
     panel: "markdown",
   },
   {
     id: "color-converter",
     label: "Color Converter",
-    icon: PaintBucket,
+    icon: IconColorFilter,
     panel: "client",
   },
 ];

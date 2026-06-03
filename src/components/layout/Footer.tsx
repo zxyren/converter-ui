@@ -1,21 +1,13 @@
-import {
-  CodeXml,
-  FileText,
-  Film,
-  House,
-  Image,
-  Music,
-  Type as TypeIcon,
-} from "lucide-react";
+import { IconBrandYoutube, IconCodeDots, IconFile, IconFileTypography, IconHome, IconMusic, IconPhoto } from "@tabler/icons-react";
 import { Link } from "wouter";
 
 const FOOTER_TOOLS = [
-  { href: "/convert/image", label: "Image", icon: Image },
-  { href: "/convert/video", label: "Video", icon: Film },
-  { href: "/convert/audio", label: "Audio", icon: Music },
-  { href: "/convert/font", label: "Font", icon: TypeIcon },
-  { href: "/convert/document", label: "Document", icon: FileText },
-  { href: "/convert/developer", label: "Developer", icon: CodeXml },
+  { href: "/convert/image", label: "Image", icon: IconPhoto },
+  { href: "/convert/video", label: "Video", icon: IconBrandYoutube },
+  { href: "/convert/audio", label: "Audio", icon: IconMusic },
+  { href: "/convert/font", label: "Font", icon: IconFileTypography },
+  { href: "/convert/document", label: "Document", icon: IconFile },
+  { href: "/convert/developer", label: "Developer", icon: IconCodeDots },
 ];
 
 export function Footer() {
@@ -76,7 +68,7 @@ export function Footer() {
                   href="/"
                   className="transition-colors flex items-center gap-2 hover:text-foreground"
                 >
-                  <House size={16} />
+                  <IconHome size={16} />
                   Home
                 </Link>
               </li>

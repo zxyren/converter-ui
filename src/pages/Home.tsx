@@ -1,25 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import {
-  ArrowRight,
-  FileImage,
-  Film,
-  Music,
-  Type,
-  FileText,
-  CodeXml,
-  Zap,
-  UserX,
-  ShieldCheck,
-  Layers,
-  Rocket,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { IconArrowRight, IconBolt, IconBrandYoutube, IconCodeDots, IconFile, IconFileInfo, IconFileTypography, IconMusic, IconPhoto, IconShieldBolt, IconUserCancel } from "@tabler/icons-react";
 
 const CATEGORIES = [
   {
     href: "/convert/image",
-    icon: FileImage,
+    icon: IconPhoto,
     label: "Image",
     description: "JPG, PNG, WEBP, HEIC, BMP, GIF",
     color: "from-cyan-500/20 to-blue-500/20",
@@ -27,7 +14,7 @@ const CATEGORIES = [
   },
   {
     href: "/convert/video",
-    icon: Film,
+    icon: IconBrandYoutube,
     label: "Video",
     description: "MP4, AVI, MOV, MKV, GIF, Audio extraction",
     color: "from-violet-500/20 to-purple-500/20",
@@ -35,7 +22,7 @@ const CATEGORIES = [
   },
   {
     href: "/convert/audio",
-    icon: Music,
+    icon: IconMusic,
     label: "Audio",
     description: "MP3, WAV, AAC, FLAC, OGG conversions",
     color: "from-lime-500/20 to-emerald-500/20",
@@ -43,7 +30,7 @@ const CATEGORIES = [
   },
   {
     href: "/convert/font",
-    icon: Type,
+    icon: IconFileTypography,
     label: "Font",
     description: "TTF, OTF, WOFF, WOFF2 variable fonts",
     color: "from-teal-500/20 to-sky-500/20",
@@ -51,7 +38,7 @@ const CATEGORIES = [
   },
   {
     href: "/convert/document",
-    icon: FileText,
+    icon: IconFile,
     label: "Document",
     description: "Word (.doc, .docx) ↔ PDF conversion",
     color: "from-amber-500/20 to-orange-500/20",
@@ -59,7 +46,7 @@ const CATEGORIES = [
   },
   {
     href: "/convert/developer",
-    icon: CodeXml,
+    icon: IconCodeDots,
     label: "Developer",
     description: "JSON, XML, YAML, Base64, Color, Markdown",
     color: "from-rose-500/20 to-pink-500/20",
@@ -69,24 +56,24 @@ const CATEGORIES = [
 
 const FEATURES = [
   {
-    icon: Zap,
+    icon: IconBolt,
     title: "Instant conversion",
     description: "Upload, convert, download — the whole flow in seconds.",
   },
   {
-    icon: UserX,
+    icon: IconUserCancel,
     title: "No sign-up needed",
     description:
       "Your files are processed and immediately deleted. Zero accounts.",
   },
   {
-    icon: Layers,
+    icon: IconFileInfo,
     title: "Any format",
     description:
       "Images, videos, audio, fonts, documents, and developer data — all in one place.",
   },
   {
-    icon: ShieldCheck,
+    icon: IconShieldBolt,
     title: "Privacy first",
     description:
       "Uploaded files are never saved to the server — they stay in your local storage only.",
@@ -118,7 +105,7 @@ export default function Home() {
         >
           {/* border border-white/30 bg-white/10 text-foreground backdrop-blur-sm */}
           <div className="mb-5 inline-flex items-center gap-2 text-sm rounded-full border border-foreground/20 bg-white/10 text-foreground backdrop-blur-sm px-4 py-2">
-            <Rocket size={16} />
+            <IconBolt size={16} />
             Free. Fast. No sign-up.
           </div>
           <h1 className="text-5xl font-extrabold  tracking-tight text-foreground md:text-7xl">
@@ -175,7 +162,7 @@ export default function Home() {
                     className="group flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
                   >
                     <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-md bg-linear-to-tr ${color}`}
+                      className={`flex h-12 w-12 aspect-square items-center justify-center rounded-md bg-linear-to-tr ${color}`}
                     >
                       <Icon size={23} className={`${iconColor}`} />
                     </div>
@@ -187,7 +174,7 @@ export default function Home() {
                     </div>
                     <div className="mt-auto flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                       Convert now
-                      <ArrowRight
+                      <IconArrowRight
                         size={16}
                         className="transition-transform group-hover:translate-x-0.5"
                       />
@@ -270,7 +257,7 @@ export default function Home() {
               >
                 <Link href={href} className="gap-2 flex items-center">
                   <Icon size={20} />
-                  <span>{label}</span>
+                  <span className="mt-1">{label}</span>
                 </Link>
               </Button>
             ))}

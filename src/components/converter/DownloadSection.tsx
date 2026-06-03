@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Download, FilePlus2, FolderDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { IconDownload, IconFolderDown, IconFolderPlus } from '@tabler/icons-react';
 
 interface DownloadSectionProps {
   resultUrl?: string;
@@ -226,13 +226,13 @@ export function DownloadSection({
         {resultUrl ? (
           <Button asChild data-testid="button-download">
             <a href={resultUrl} download={downloadName}>
-              <Download size={20} />
+              <IconDownload size={20} />
               Download {outputFormat.toUpperCase()}
             </a>
           </Button>
         ) : (
           <Button disabled data-testid="button-download-unavailable">
-            <Download size={20} />
+            <IconDownload size={20} />
             Download {outputFormat.toUpperCase()}
           </Button>
         )}
@@ -242,7 +242,7 @@ export function DownloadSection({
           disabled={!resultUrl || isSaving}
           data-testid="button-save-to"
         >
-          <FolderDown size={20} />
+          <IconFolderDown size={20} />
           {isSaving ? "Saving..." : "Save As..."}
         </Button>
         <Button
@@ -250,7 +250,7 @@ export function DownloadSection({
           onClick={onReset}
           data-testid="button-convert-another"
         >
-          <FilePlus2 size={20} />
+          <IconFolderPlus size={20} />
           Convert Another
         </Button>
       </div>

@@ -1,28 +1,17 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Moon,
-  Sun,
-  Menu,
-  X,
-  FileImage,
-  Film,
-  Music,
-  Type,
-  FileText,
-  CodeXml,
-} from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { IconBrandYoutube, IconCodeDots, IconFile, IconFileTypography, IconMenu, IconMoon, IconMusic, IconPhoto, IconSun, IconX } from "@tabler/icons-react";
 
 const NAV_ITEMS = [
-  { href: "/convert/image", label: "Image", icon: FileImage },
-  { href: "/convert/video", label: "Video", icon: Film },
-  { href: "/convert/audio", label: "Audio", icon: Music },
-  { href: "/convert/font", label: "Font", icon: Type },
-  { href: "/convert/document", label: "Document", icon: FileText },
-  { href: "/convert/developer", label: "Developer", icon: CodeXml },
+  { href: "/convert/image", label: "Image", icon: IconPhoto },
+  { href: "/convert/video", label: "Video", icon: IconBrandYoutube },
+  { href: "/convert/audio", label: "Audio", icon: IconMusic },
+  { href: "/convert/font", label: "Font", icon: IconFileTypography },
+  { href: "/convert/document", label: "Document", icon: IconFile },
+  { href: "/convert/developer", label: "Developer", icon: IconCodeDots },
 ];
 
 export function Navbar() {
@@ -58,7 +47,7 @@ export function Navbar() {
                   : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                   }`}
               >
-                <Icon size={16} className={active ? "fill" : "text-muted-foreground"} />
+                <Icon size={20} className={active ? "" : "text-muted-foreground"} />
                 <span className="mt-1">{label}</span>
               </Link>
             );
@@ -74,7 +63,7 @@ export function Navbar() {
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="h-8 w-8"
           >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            {theme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
           </Button>
           <Button
             variant="ghost"
@@ -83,7 +72,7 @@ export function Navbar() {
             data-testid="button-mobile-menu"
             onClick={() => setMobileOpen((o) => !o)}
           >
-            {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+            {mobileOpen ? <IconX size={20} /> : <IconMenu size={20} />}
           </Button>
         </div>
       </div>
@@ -111,7 +100,7 @@ export function Navbar() {
                       : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                       }`}
                   >
-                    <Icon size={16} />
+                    <Icon size={20} />
                     {label}
                   </Link>
                 );
