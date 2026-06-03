@@ -80,7 +80,7 @@ export function FormatSelector({
 
   return (
     <div className="space-y-4">
-      <p className="text-sm font-semibold text-muted-foreground">
+      <p className="font-medium text-muted-foreground">
         Select output format
       </p>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

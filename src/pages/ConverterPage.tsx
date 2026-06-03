@@ -69,8 +69,8 @@ export function ConverterPage({
         transition={{ duration: 0.4, delay: 0.25 }}
         className="mt-6 rounded-xl border border-border bg-card/50 p-4"
       >
-        <p className="text-sm mb-3 font-semibold text-muted-foreground">
-          Select output format
+        <p className="mb-3 font-medium text-muted-foreground">
+          Supported Input Formats
         </p>
         <div className="flex flex-wrap gap-2">
           {supportedInputs.map((ext) => (
