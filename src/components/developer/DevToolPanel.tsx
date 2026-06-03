@@ -209,12 +209,21 @@ export function DevToolPanel({
                 data-testid="button-copy"
                 className="absolute right-2 top-5 h-6 gap-1 text-xs"
               >
-                {copied ? (
-                  <IconCheck size={14} className="text-emerald-500" />
-                ) : (
-                  <IconCopy size={14} />
-                )}
-                <span className="hidden sm:inline">
+                <span className="relative inline-block w-4 h-4">
+                  <IconCopy
+                    size={14}
+                    className={`absolute inset-0 transform transition-all duration-300 ${copied ? "rotate-45 scale-0" : "opacity-100 scale-100"
+                      }`}
+                  />
+                  <IconCheck
+                    size={14}
+                    className={`absolute inset-0 transform transition-all duration-300 ${copied
+                      ? "opacity-100 scale-100  text-emerald-500"
+                      : "-rotate-45 scale-0"
+                      }`}
+                  />
+                </span>
+                <span className="hidden sm:inline ml-1 transition-opacity duration-300 ease-in-out">
                   {copied ? "Copied" : "Copy"}
                 </span>
               </Button>
