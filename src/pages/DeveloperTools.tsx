@@ -155,7 +155,7 @@ export default function DeveloperTools() {
                 onClick={() => setActiveTool(id)}
                 data-testid={`button-tool-${id}`}
                 className={`flex items-center gap-2 cursor-pointer rounded-lg px-3 py-2 font-medium text-left transition-colors ${activeTool === id
-                  ? "outline outline-primary/30 text-primary"
+                  ? "bg-primary/30 text-foreground"
                   : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                   }`}
               >
