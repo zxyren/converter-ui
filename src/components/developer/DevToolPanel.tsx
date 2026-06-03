@@ -193,7 +193,7 @@ export function DevToolPanel({
               variant="glass"
               size="sm"
               onClick={handlePaste}
-              className="absolute right-2 top-2 text-xs"
+              className="absolute active:scale-95 transition-transform duration-200 right-2 top-2 text-xs"
             >
               Paste
             </Button>

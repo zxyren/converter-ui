@@ -116,9 +116,9 @@ export function FileUploadButton({
           variant="outline"
           disabled={disabled}
           onClick={() => fileInputRef.current?.click()}
-          data-testid="button-devtool-upload"
+          className="active:scale-95 transition-transform duration-200"
         >
-          <IconPaperclip size={20} className="shrink-0" />
+          <IconPaperclip size={20} />
           Upload File
         </Button>
       )}
