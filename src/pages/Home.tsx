@@ -172,11 +172,10 @@ export default function Home() {
                         {description}
                       </p>
                     </div>
-                    <div className="mt-auto flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                    <div className="mt-auto flex items-center text-sm duration-300 font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                       Convert now
                       <IconArrowRight
                         size={16}
-                        className="transition-transform group-hover:translate-x-0.5"
                       />
                     </div>
                   </Link>
@@ -257,7 +256,7 @@ export default function Home() {
               >
                 <Link href={href} className="gap-2 flex items-center">
                   <Icon size={20} />
-                  <span className="mt-1">{label}</span>
+                  <span>{label}</span>
                 </Link>
               </Button>
             ))}
