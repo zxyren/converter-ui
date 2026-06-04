@@ -9,7 +9,7 @@ const CATEGORIES = [
     icon: IconPhoto,
     label: "Image",
     description: "JPG, PNG, WEBP, HEIC, BMP, GIF",
-    color: "from-cyan-500/20 to-blue-500/20",
+    color: "from-cyan-500/30 to-blue-500/20",
     iconColor: "text-cyan-500",
   },
   {
@@ -17,7 +17,7 @@ const CATEGORIES = [
     icon: IconBrandYoutube,
     label: "Video",
     description: "MP4, AVI, MOV, MKV, GIF, Audio extraction",
-    color: "from-violet-500/20 to-purple-500/20",
+    color: "from-violet-500/30 to-purple-500/20",
     iconColor: "text-violet-500",
   },
   {
@@ -25,7 +25,7 @@ const CATEGORIES = [
     icon: IconMusic,
     label: "Audio",
     description: "MP3, WAV, AAC, FLAC, OGG conversions",
-    color: "from-lime-500/20 to-emerald-500/20",
+    color: "from-lime-500/30 to-emerald-500/20",
     iconColor: "text-lime-500",
   },
   {
@@ -33,7 +33,7 @@ const CATEGORIES = [
     icon: IconFileTypography,
     label: "Font",
     description: "TTF, OTF, WOFF, WOFF2 variable fonts",
-    color: "from-teal-500/20 to-sky-500/20",
+    color: "from-teal-500/30 to-sky-500/20",
     iconColor: "text-teal-500",
   },
   {
@@ -41,7 +41,7 @@ const CATEGORIES = [
     icon: IconFile,
     label: "Document",
     description: "Word (.doc, .docx) ↔ PDF conversion",
-    color: "from-amber-500/20 to-orange-500/20",
+    color: "from-amber-500/30 to-orange-500/20",
     iconColor: "text-amber-500",
   },
   {
