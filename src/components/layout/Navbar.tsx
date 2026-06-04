@@ -48,7 +48,7 @@ export function Navbar() {
                   }`}
               >
                 <Icon size={20} className={active ? "" : "text-muted-foreground"} />
-                <span className="mt-1">{label}</span>
+                <span>{label}</span>
               </Link>
             );
           })}

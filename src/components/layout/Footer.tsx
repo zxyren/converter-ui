@@ -52,7 +52,7 @@ export function Footer() {
                       size={20}
                       className="opacity-70 transition-opacity group-hover:opacity-100"
                     />
-                    <span className="mt-1">{label}</span>
+                    <span>{label}</span>
                   </Link>
                 </li>
               ))}
@@ -69,7 +69,7 @@ export function Footer() {
                   className="transition-colors flex items-center gap-2 hover:text-foreground"
                 >
                   <IconHome size={20} />
-                  <span className="mt-1">Home</span>
+                  <span>Home</span>
                 </Link>
               </li>
               <li>
