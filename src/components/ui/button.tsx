@@ -5,28 +5,24 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0" +
-  " hover-elevate active-elevate-2",
+  "inline-flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap rounded-md text-sm font-medium leading-none transition-colors focus-visible:outline-none focus-visible:ring-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 hover-elevate active-elevate-2",
   {
     variants: {
       variant: {
         default: "bg-primary/20 text-foreground border border-primary/50",
         destructive: "bg-rose-500/10 shadow-sm border border-rose-500/50",
-        outline: " border border-foreground/50 shadow-xs active:shadow-none ",
-        secondary:
-          "border bg-secondary text-secondary-foreground border border-secondary-border ",
+        outline: "border border-foreground/50 shadow-xs active:shadow-none",
+        secondary: "bg-secondary text-secondary-foreground border border-secondary-border",
         ghost: "border border-transparent text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        white:
-          "font-black bg-black text-white border border-white/30 dark:bg-white dark:text-black dark:border-black/30",
-        glass:
-          "border border-foreground/30 bg-white/10 font-black text-foreground backdrop-blur-sm",
+        white: "font-black bg-black text-white border border-white/30 dark:bg-white dark:text-black dark:border-black/30",
+        glass: "border border-foreground/30 bg-white/10 font-black text-foreground backdrop-blur-sm",
       },
       size: {
-        default: "min-h-9 px-4 py-2",
-        sm: "min-h-8 rounded-md px-3 text-xs",
-        lg: "min-h-10 rounded-md px-8",
-        xl: "min-h-12 rounded-full px-10",
+        default: "h-9 px-4",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
+        xl: "h-12 rounded-full px-10 text-base",
         icon: "h-9 w-9",
       },
     },
@@ -38,8 +34,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

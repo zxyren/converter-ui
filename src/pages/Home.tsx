@@ -122,16 +122,15 @@ export default function Home() {
               asChild
               size="xl"
               variant="white"
-              className="gap-2 px-8"
-              data-testid="button-start-converting"
+              className="font-medium"
             >
               <Link href="/convert/image">Get Started</Link>
             </Button>
             <Button
               asChild
-              variant="glass"
               size="xl"
-              data-testid="button-view-tools"
+              variant="glass"
+              className="font-medium"
             >
               <Link href="/convert/developer">Developer Tools</Link>
             </Button>

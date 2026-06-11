@@ -42,13 +42,11 @@ export function Navbar() {
                 key={href}
                 href={href}
                 data-testid={`nav-link-${label.toLowerCase()}`}
-                className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${active
-                  ? "bg-primary/20 text-primary"
-                  : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${active ? "bg-primary/20 text-primary" : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                   }`}
               >
                 <Icon size={20} className={active ? "" : "text-muted-foreground"} />
-                <span>{label}</span>
+                <span className="leading-none">{label}</span>
               </Link>
             );
           })}
