@@ -18,6 +18,7 @@ export function Navbar() {
   const [location] = useLocation();
   const { theme, setTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hoveredPath, setHoveredPath] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
@@ -34,19 +35,38 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-2 md:flex">
+        <nav 
+          className="hidden items-center gap-2 md:flex"
+          onMouseLeave={() => setHoveredPath(null)}
+        >
           {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
             const active = location.startsWith(href);
             return (
               <Link
                 key={href}
                 href={href}
+                onMouseEnter={() => setHoveredPath(href)}
                 data-testid={`nav-link-${label.toLowerCase()}`}
-                className={`flex items-center leading-none gap-1.5 rounded-full px-5 py-2.5 text-base font-medium transition-colors ${active ? "bg-foreground text-muted" : "text-muted-foreground hover:bg-foreground/20 hover:text-foreground"
-                  }`}
+                className={`relative flex items-center leading-none gap-1.5 rounded-full px-5 py-2.5 text-base font-medium transition-colors ${
+                  active ? "text-muted" : "text-muted-foreground hover:text-foreground"
+                }`}
               >
-                <Icon size={20} className={active ? "" : "text-muted-foreground"} />
-                {label}
+                {active && (
+                  <motion.div
+                    layoutId="navbar-active-indicator"
+                    className="absolute inset-0 rounded-full bg-foreground"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                {hoveredPath === href && !active && (
+                  <motion.div
+                    layoutId="navbar-hover-indicator"
+                    className="absolute inset-0 rounded-full bg-foreground/20"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                <Icon size={20} className={`relative z-10 ${active ? "" : "text-muted-foreground"}`} />
+                <span className="relative z-10">{label}</span>
               </Link>
             );
           })}
