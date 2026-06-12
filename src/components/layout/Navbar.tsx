@@ -3,11 +3,11 @@ import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import { IconBrandYoutube, IconCodeDots, IconFile, IconFileTypography, IconMenu, IconMoon, IconMusic, IconPhoto, IconSun, IconX } from "@tabler/icons-react";
+import { IconCodeDots, IconFile, IconFileTypography, IconMenu, IconMoon, IconMusic, IconPhoto, IconPlayerPlay, IconSun, IconX } from "@tabler/icons-react";
 
 const NAV_ITEMS = [
   { href: "/convert/image", label: "Image", icon: IconPhoto },
-  { href: "/convert/video", label: "Video", icon: IconBrandYoutube },
+  { href: "/convert/video", label: "Video", icon: IconPlayerPlay },
   { href: "/convert/audio", label: "Audio", icon: IconMusic },
   { href: "/convert/font", label: "Font", icon: IconFileTypography },
   { href: "/convert/document", label: "Document", icon: IconFile },
@@ -34,7 +34,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-3 md:flex">
+        <nav className="hidden items-center gap-2 md:flex">
           {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
             const active = location.startsWith(href);
             return (
@@ -42,11 +42,11 @@ export function Navbar() {
                 key={href}
                 href={href}
                 data-testid={`nav-link-${label.toLowerCase()}`}
-                className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${active ? "bg-primary/20 text-primary" : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                className={`flex items-center leading-none gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-colors ${active ? "bg-primary/20 text-primary" : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                   }`}
               >
                 <Icon size={20} className={active ? "" : "text-muted-foreground"} />
-                <span className="leading-none">{label}</span>
+                {label}
               </Link>
             );
           })}
