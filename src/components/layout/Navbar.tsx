@@ -21,7 +21,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex py-5 max-w-7xl items-center justify-between px-4 md:px-6">
+      <div className="mx-auto flex py-6 max-w-7xl items-center justify-between px-4 md:px-6">
         <Link
           href="/"
           className="flex w-fit items-center gap-3 text-foreground transition-opacity hover:opacity-90"
@@ -42,7 +42,7 @@ export function Navbar() {
                 key={href}
                 href={href}
                 data-testid={`nav-link-${label.toLowerCase()}`}
-                className={`flex items-center leading-none gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-colors ${active ? "bg-primary/20 text-primary" : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                className={`flex items-center leading-none gap-1.5 rounded-full px-5 py-2.5 text-base font-medium transition-colors ${active ? "bg-foreground text-muted" : "text-muted-foreground hover:bg-foreground/20 hover:text-foreground"
                   }`}
               >
                 <Icon size={20} className={active ? "" : "text-muted-foreground"} />
